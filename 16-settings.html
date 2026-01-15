@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#F9FAFB]"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings - CrowdBuilder</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+primaryHover: '#0052CC',
+secondary: '#6B7280',
+success: '#10B981',
+warning: '#F59E0B',
+error: '#EF4444',
+dark: '#111827',
+border: '#E5E7EB',
+surface: '#FFFFFF',
+bg: '#F9FAFB'
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+},
+boxShadow: {
+'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+}
+}
+}
+}
+</script>
+<style>
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+/* Custom Checkbox/Toggle Styles */
+.toggle-checkbox:checked {
+right: 0;
+border-color: #0066FF;
+}
+.toggle-checkbox:checked + .toggle-label {
+background-color: #0066FF;
+}
+/* Smooth fade for tabs */
+.tab-content {
+animation: fadeIn 0.2s ease-in-out;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(5px); }
+to { opacity: 1; transform: translateY(0); }
+}
+</style></head>
+<body class="text-[#111827] font-sans antialiased bg-bg min-h-screen flex selection:bg-primary/20 selection:text-primary">
+
+    <!-- SIDEBAR (Fixed 200px) -->
+    <aside class="fixed top-0 left-0 w-[200px] h-screen bg-surface border-r border-border z-40 flex flex-col hidden lg:flex">
+        <div class="h-16 flex items-center px-6 border-b border-border">
+            <div class="flex items-center gap-2 text-primary">
+                <iconify-icon icon="lucide:layers" width="24" stroke-width="1.5"></iconify-icon>
+                <span class="font-semibold tracking-tight text-[18px] text-dark">CrowdBuilder</span>
+            </div>
+        </div>
+
+        <nav class="flex-1 px-3 py-6 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-[8px] transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:layout-dashboard" width="18"></iconify-icon>
+                Feed
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-[8px] transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:compass" width="18"></iconify-icon>
+                Discover
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-[8px] transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:trending-up" width="18"></iconify-icon>
+                Trending
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-[8px] transition-colors text-sm font-medium">
+                <div class="flex items-center gap-3 flex-1">
+                    <iconify-icon icon="lucide:bell" width="18"></iconify-icon>
+                    Notifications
+                </div>
+            </a>
+
+            <div class="pt-4 pb-2 px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Your Space</div>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-[8px] transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:briefcase" width="18"></iconify-icon>
+                My Portfolio
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-[8px] transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:bookmark" width="18"></iconify-icon>
+                Saved Items
+            </a>
+            
+            <!-- Settings Link Active -->
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-dark bg-gray-100 rounded-[8px] transition-colors text-sm font-medium mt-4">
+                <iconify-icon icon="lucide:settings" width="18" class="text-primary"></iconify-icon>
+                Settings
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-border">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300 overflow-hidden">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="User" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-semibold text-dark group-hover:text-primary transition-colors">Alex D.</span>
+                    <span class="text-[10px] text-secondary">Free Plan</span>
+                </div>
+            </a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 lg:ml-[200px] w-full min-h-screen flex flex-col">
+        
+        <!-- Mobile Header -->
+        <header class="lg:hidden h-16 bg-surface border-b border-border flex items-center justify-between px-4 sticky top-0 z-30">
+            <div class="flex items-center gap-2 text-primary">
+                <iconify-icon icon="lucide:layers" width="24"></iconify-icon>
+                <span class="font-semibold tracking-tight">CrowdBuilder</span>
+            </div>
+            <button class="text-secondary p-2">
+                <iconify-icon icon="lucide:menu" width="24"></iconify-icon>
+            </button>
+        </header>
+
+        <div class="flex-1 w-full max-w-5xl mx-auto px-4 md:px-8 py-10">
+            
+            <!-- PAGE HEADER -->
+            <div class="mb-8">
+                <h2 class="text-[36px] font-semibold text-dark tracking-tight leading-tight">Settings</h2>
+                <p class="text-secondary mt-1 text-base">Manage your account settings and preferences.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-start">
+                
+                <!-- SETTINGS SIDEBAR NAV (200px) -->
+                <nav class="w-full md:w-[200px] flex-shrink-0 space-y-1">
+                    <button onclick="switchTab('profile')" id="nav-profile" class="w-full text-left flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-primary bg-primary/5 transition-all">
+                        <iconify-icon icon="lucide:user" width="18"></iconify-icon>
+                        Profile
+                    </button>
+                    <button onclick="switchTab('password')" id="nav-password" class="w-full text-left flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-secondary hover:text-dark hover:bg-gray-50 transition-all">
+                        <iconify-icon icon="lucide:lock" width="18"></iconify-icon>
+                        Password
+                    </button>
+                    <button onclick="switchTab('notifications')" id="nav-notifications" class="w-full text-left flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-secondary hover:text-dark hover:bg-gray-50 transition-all">
+                        <iconify-icon icon="lucide:bell" width="18"></iconify-icon>
+                        Notifications
+                    </button>
+                    <button onclick="switchTab('privacy')" id="nav-privacy" class="w-full text-left flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-secondary hover:text-dark hover:bg-gray-50 transition-all">
+                        <iconify-icon icon="lucide:shield" width="18"></iconify-icon>
+                        Privacy
+                    </button>
+                </nav>
+
+                <!-- TAB CONTENTS -->
+                <div class="flex-1 w-full max-w-2xl">
+                    
+                    <!-- PROFILE TAB -->
+                    <div id="tab-profile" class="tab-content block">
+                        <div class="bg-surface border border-border rounded-xl shadow-subtle p-6">
+                            <h3 class="text-[20px] font-semibold text-dark mb-6 tracking-tight">Public Profile</h3>
+                            
+                            <!-- Avatar -->
+                            <div class="flex items-center gap-6 mb-8">
+                                <div class="relative group cursor-pointer">
+                                    <div class="w-24 h-24 rounded-full overflow-hidden border border-gray-200">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="Profile" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <span class="text-white text-xs font-medium">Change</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="font-medium text-dark">Profile Photo</span>
+                                    <span class="text-sm text-secondary mb-3">Min 400x400px, PNG or JPG.</span>
+                                    <button class="w-fit text-sm font-medium text-secondary border border-gray-300 rounded-lg px-3 py-1.5 hover:text-dark hover:bg-gray-50 transition-colors">
+                                        Upload new
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Form -->
+                            <form onsubmit="event.preventDefault();" class="space-y-5">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div>
+                                        <label class="block text-sm font-medium text-dark mb-1.5">Full Name</label>
+                                        <input type="text" value="Alex D." class="block w-full rounded-lg border-0 py-2 px-3 text-dark shadow-subtle ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-dark mb-1.5">Location</label>
+                                        <input type="text" value="San Francisco, CA" class="block w-full rounded-lg border-0 py-2 px-3 text-dark shadow-subtle ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-dark mb-1.5">Email Address</label>
+                                    <div class="relative">
+                                        <iconify-icon icon="lucide:mail" class="absolute left-3 top-2.5 text-gray-400" width="16"></iconify-icon>
+                                        <input type="email" value="alex.d@example.com" readonly="" class="block w-full rounded-lg border-0 py-2 pl-9 pr-3 text-gray-500 bg-gray-50 shadow-subtle ring-1 ring-inset ring-gray-200 sm:text-sm sm:leading-6 cursor-not-allowed">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-dark mb-1.5">Bio</label>
+                                    <textarea rows="4" class="block w-full rounded-lg border-0 py-2 px-3 text-dark shadow-subtle ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 resize-none h-[200px]" placeholder="Tell us a little about yourself..."></textarea>
+                                    <span class="text-xs text-secondary mt-1 block text-right">0/240 characters</span>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-dark mb-1.5">Website</label>
+                                    <div class="flex rounded-lg shadow-subtle ring-1 ring-inset ring-gray-200 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary overflow-hidden">
+                                        <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm bg-gray-50 border-r border-gray-200 px-3">https://</span>
+                                        <input type="text" class="block flex-1 border-0 bg-transparent py-2 pl-3 text-dark focus:ring-0 sm:text-sm sm:leading-6" placeholder="www.example.com">
+                                    </div>
+                                </div>
+
+                                <div class="pt-4 border-t border-border flex justify-end">
+                                    <button type="submit" class="bg-primary hover:bg-primaryHover text-white font-medium text-sm px-4 py-2 rounded-lg shadow-sm transition-colors flex items-center gap-2">
+                                        Save Profile
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- PASSWORD TAB -->
+                    <div id="tab-password" class="tab-content hidden">
+                        <div class="bg-surface border border-border rounded-xl shadow-subtle p-6">
+                            <h3 class="text-[20px] font-semibold text-dark mb-6 tracking-tight">Change Password</h3>
+                            
+                            <form onsubmit="event.preventDefault();" class="space-y-5">
+                                <div>
+                                    <label class="block text-sm font-medium text-dark mb-1.5">Current Password</label>
+                                    <input type="password" class="block w-full rounded-lg border-0 py-2 px-3 text-dark shadow-subtle ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6">
+                                </div>
+
+                                <div class="pt-2">
+                                    <label class="block text-sm font-medium text-dark mb-1.5">New Password</label>
+                                    <input type="password" class="block w-full rounded-lg border-0 py-2 px-3 text-dark shadow-subtle ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6">
+                                    <!-- Strength Indicator -->
+                                    <div class="mt-2 flex gap-1 h-1">
+                                        <div class="flex-1 bg-success rounded-full"></div>
+                                        <div class="flex-1 bg-success rounded-full"></div>
+                                        <div class="flex-1 bg-gray-200 rounded-full"></div>
+                                        <div class="flex-1 bg-gray-200 rounded-full"></div>
+                                    </div>
+                                    <span class="text-xs text-success mt-1 block">Strong password</span>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-dark mb-1.5">Confirm New Password</label>
+                                    <input type="password" class="block w-full rounded-lg border-0 py-2 px-3 text-dark shadow-subtle ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6">
+                                </div>
+
+                                <div class="pt-4 border-t border-border flex items-center justify-between">
+                                    <a href="#" class="text-sm text-secondary hover:text-dark">Forgot your password?</a>
+                                    <button type="submit" class="bg-primary hover:bg-primaryHover text-white font-medium text-sm px-4 py-2 rounded-lg shadow-sm transition-colors">
+                                        Update Password
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- NOTIFICATIONS TAB -->
+                    <div id="tab-notifications" class="tab-content hidden">
+                        <div class="bg-surface border border-border rounded-xl shadow-subtle overflow-hidden">
+                            <div class="p-6 border-b border-border">
+                                <h3 class="text-[20px] font-semibold text-dark mb-1 tracking-tight">Email Notifications</h3>
+                                <p class="text-sm text-secondary">Choose what updates you want to receive via email.</p>
+                            </div>
+                            
+                            <div class="p-6 space-y-6">
+                                <!-- Item -->
+                                <div class="flex items-center justify-between">
+                                    <div class="flex flex-col">
+                                        <span class="text-sm font-medium text-dark">New comments on my ideas</span>
+                                        <span class="text-xs text-secondary">Get notified when someone posts a comment.</span>
+                                    </div>
+                                    <!-- Custom Toggle -->
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer" checked="">
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                                <!-- Item -->
+                                <div class="flex items-center justify-between">
+                                    <div class="flex flex-col">
+                                        <span class="text-sm font-medium text-dark">New votes on my ideas</span>
+                                        <span class="text-xs text-secondary">Receive an email when you get an upvote.</span>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer" checked="">
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                                <!-- Item -->
+                                <div class="flex items-center justify-between">
+                                    <div class="flex flex-col">
+                                        <span class="text-sm font-medium text-dark">Weekly Digest</span>
+                                        <span class="text-xs text-secondary">A summary of top trending ideas every Monday.</span>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer">
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="p-6 border-t border-border bg-gray-50/50">
+                                <h3 class="text-[20px] font-semibold text-dark mb-1 tracking-tight">Push Notifications</h3>
+                                <p class="text-sm text-secondary mb-6">Manage notifications on your mobile devices.</p>
+                                
+                                <div class="space-y-6">
+                                     <!-- Item -->
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium text-dark">New comments</span>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer" checked="">
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                        </label>
+                                    </div>
+                                    <!-- Item -->
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium text-dark">New votes</span>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer">
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-4 border-t border-border flex justify-end bg-surface">
+                                <button type="button" class="bg-primary hover:bg-primaryHover text-white font-medium text-sm px-4 py-2 rounded-lg shadow-sm transition-colors">
+                                    Save Preferences
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PRIVACY TAB -->
+                    <div id="tab-privacy" class="tab-content hidden">
+                        <div class="space-y-6">
+                            <div class="bg-surface border border-border rounded-xl shadow-subtle p-6">
+                                <h3 class="text-[20px] font-semibold text-dark mb-6 tracking-tight">Privacy Settings</h3>
+                                
+                                <div class="space-y-6">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium text-dark">Public Profile</span>
+                                            <span class="text-xs text-secondary">Allow anyone to see your profile details.</span>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer" checked="">
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium text-dark">Visible Saved Ideas</span>
+                                            <span class="text-xs text-secondary">Allow others to see ideas you have bookmarked.</span>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer">
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                        </label>
+                                    </div>
+
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium text-dark">Show Voting History</span>
+                                            <span class="text-xs text-secondary">Display your upvotes on your public profile.</span>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer" checked="">
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Danger Zone -->
+                            <div class="bg-white border border-error/20 rounded-xl shadow-subtle overflow-hidden">
+                                <div class="p-6">
+                                    <h3 class="text-[18px] font-semibold text-error mb-2 tracking-tight">Danger Zone</h3>
+                                    <p class="text-sm text-secondary mb-6">Once you delete your account, there is no going back. Please be certain.</p>
+                                    
+                                    <div class="flex items-center justify-between p-4 bg-error/5 border border-error/10 rounded-lg">
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium text-dark">Delete Account</span>
+                                            <span class="text-xs text-secondary">Permanently remove your account and all data.</span>
+                                        </div>
+                                        <button class="text-error hover:bg-error hover:text-white border border-error/30 font-medium text-sm px-4 py-2 rounded-lg transition-colors">
+                                            Delete Account
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('block');
+            });
+            // Show selected tab
+            const selectedTab = document.getElementById('tab-' + tabId);
+            if (selectedTab) {
+                selectedTab.classList.remove('hidden');
+                selectedTab.classList.add('block');
+            }
+
+            // Update nav styles
+            const navIds = ['profile', 'password', 'notifications', 'privacy'];
+            navIds.forEach(id => {
+                const btn = document.getElementById('nav-' + id);
+                if (id === tabId) {
+                    // Active style
+                    btn.classList.remove('text-secondary', 'hover:text-dark', 'hover:bg-gray-50');
+                    btn.classList.add('text-primary', 'bg-primary/5');
+                } else {
+                    // Inactive style
+                    btn.classList.add('text-secondary', 'hover:text-dark', 'hover:bg-gray-50');
+                    btn.classList.remove('text-primary', 'bg-primary/5');
+                }
+            });
+        }
+    </script>
+
+</body></html>

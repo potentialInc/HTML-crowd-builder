@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review: Smart AC Controller - CrowdBuilder Admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+primaryLight: '#E5F0FF',
+secondary: '#6B7280',
+dark: '#111827',
+border: '#E5E7EB',
+surface: '#FFFFFF',
+bg: '#F3F4F6',
+success: '#10B981',
+warning: '#F59E0B',
+danger: '#EF4444',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+},
+boxShadow: {
+'soft': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+}
+}
+}
+}
+</script>
+<style>
+.sidebar-scroll::-webkit-scrollbar { width: 4px; }
+.sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background-color: #E5E7EB; border-radius: 20px; }
+/* Hide scrollbar for clean look in main area but allow scroll */
+.hide-scroll::-webkit-scrollbar { display: none; }
+.hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+</style></head>
+<body class="bg-bg font-sans text-dark antialiased h-screen flex overflow-hidden selection:bg-primary/20 selection:text-primary">
+
+    <!-- ADMIN SIDEBAR (Fixed 200px) -->
+    <aside class="w-[200px] h-full bg-surface border-r border-border flex flex-col fixed left-0 top-0 z-50 shadow-sm">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-5 border-b border-border/50">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-primary flex items-center justify-center text-white">
+                    <iconify-icon icon="lucide:layers" width="14" stroke-width="2.5"></iconify-icon>
+                </div>
+                <span class="font-semibold text-sm tracking-tight text-dark">CrowdBuilder</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto sidebar-scroll py-6 px-3 space-y-8">
+            <!-- Section: Overview -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Overview</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:layout-dashboard" width="18"></iconify-icon>
+                            Admin Home
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Content -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Content</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <!-- ACTIVE STATE (Parent of current view) -->
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md bg-primary/5 text-primary text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:list-todo" width="18"></iconify-icon>
+                            Pending Queue
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:star" width="18"></iconify-icon>
+                            Featured
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:pen-tool" width="18"></iconify-icon>
+                            CMS
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Users -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Users</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:users" width="18"></iconify-icon>
+                            Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:flag" width="18"></iconify-icon>
+                            Reports
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Documents -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Documents</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:file-text" width="18"></iconify-icon>
+                            Doc Management
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- User Profile (Bottom) -->
+        <div class="p-4 border-t border-border">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-xs font-medium text-dark">
+                    AD
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-medium text-dark">Admin User</span>
+                    <span class="text-[10px] text-secondary">Super Admin</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-[200px] flex-1 h-full overflow-y-auto bg-bg p-8">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Back Link -->
+            <div class="mb-6">
+                <a href="#" class="inline-flex items-center text-secondary hover:text-primary text-sm font-medium transition-colors">
+                    <iconify-icon icon="lucide:arrow-left" width="16" class="mr-1"></iconify-icon>
+                    Back to Pending Queue
+                </a>
+            </div>
+
+            <!-- Grid Layout: 60% Idea / 40% Review -->
+            <div class="grid grid-cols-5 gap-8">
+                
+                <!-- LEFT COLUMN: Idea Content (60% -> 3/5 cols) -->
+                <div class="col-span-3 space-y-6">
+                    
+                    <!-- Idea Header Card -->
+                    <div class="bg-white rounded-lg border border-border p-6 shadow-sm">
+                        <div class="flex gap-6">
+                            <!-- Thumbnail -->
+                            <div class="w-20 h-20 rounded-lg bg-cyan-100 flex-shrink-0 flex items-center justify-center text-cyan-600">
+                                <iconify-icon icon="lucide:wind" width="32"></iconify-icon>
+                            </div>
+                            
+                            <!-- Header Info -->
+                            <div class="flex-1">
+                                <div class="flex items-start justify-between">
+                                    <h2 class="text-4xl font-semibold tracking-tight text-dark leading-tight mb-2">Smart AC Controller</h2>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">
+                                        92% Similarity
+                                    </span>
+                                </div>
+                                
+                                <div class="flex items-center gap-4 text-sm mb-3">
+                                    <span class="bg-gray-100 text-secondary px-2.5 py-0.5 rounded text-xs font-medium">IoT / Home Automation</span>
+                                    <span class="text-secondary flex items-center gap-1">
+                                        <iconify-icon icon="lucide:calendar" width="14"></iconify-icon> Jan 12, 2026
+                                    </span>
+                                </div>
+
+                                <div class="flex items-center gap-2 pt-1">
+                                    <div class="h-6 w-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-[10px] font-bold">DR</div>
+                                    <span class="text-sm text-dark font-medium">David Ross</span>
+                                    <span class="text-xs text-secondary">• 3 previous submissions</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story / Description -->
+                    <div class="bg-white rounded-lg border border-border p-6 shadow-sm">
+                        <h3 class="text-lg font-semibold text-dark mb-4 flex items-center gap-2">
+                            <iconify-icon icon="lucide:book-open" width="20" class="text-secondary"></iconify-icon> 
+                            Project Story
+                        </h3>
+                        <div class="prose prose-sm max-w-none text-gray-600 space-y-4 leading-relaxed">
+                            <p>
+                                Traditional air conditioning systems are inefficient and often run when no one is home, leading to massive energy waste. Our Smart AC Controller bridges the gap between old IR-controlled units and modern smart home ecosystems.
+                            </p>
+                            <p>
+                                Unlike competitors, our device uses local AI processing to learn the thermal properties of a room, predicting exactly when to turn on to reach the desired temperature by the time the user arrives, without relying solely on cloud connectivity. It integrates seamlessly with HomeKit, Alexa, and Google Home via Matter protocol.
+                            </p>
+                            <p>
+                                We plan to launch a Kickstarter campaign in Q3 2026 with a target price point of $49, significantly undercutting the current market leaders like Sensibo or Tado.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- SWOT Analysis Grid -->
+                    <div class="bg-white rounded-lg border border-border p-6 shadow-sm">
+                        <h3 class="text-lg font-semibold text-dark mb-4 flex items-center gap-2">
+                            <iconify-icon icon="lucide:grid-2x2" width="20" class="text-secondary"></iconify-icon> 
+                            SWOT Analysis
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- Strengths -->
+                            <div class="p-4 rounded-md bg-emerald-50 border border-emerald-100">
+                                <h4 class="text-sm font-semibold text-emerald-900 mb-2 flex items-center gap-1">
+                                    <iconify-icon icon="lucide:trending-up" width="14"></iconify-icon> Strengths
+                                </h4>
+                                <ul class="list-disc list-inside text-xs text-emerald-800 space-y-1">
+                                    <li>Local AI processing (Privacy focus)</li>
+                                    <li>Matter protocol support</li>
+                                    <li>Low manufacturing cost</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Weaknesses -->
+                            <div class="p-4 rounded-md bg-rose-50 border border-rose-100">
+                                <h4 class="text-sm font-semibold text-rose-900 mb-2 flex items-center gap-1">
+                                    <iconify-icon icon="lucide:trending-down" width="14"></iconify-icon> Weaknesses
+                                </h4>
+                                <ul class="list-disc list-inside text-xs text-rose-800 space-y-1">
+                                    <li>Hardware dependency</li>
+                                    <li>Crowded market</li>
+                                    <li>Requires installation</li>
+                                </ul>
+                            </div>
+
+                            <!-- Opportunities -->
+                            <div class="p-4 rounded-md bg-blue-50 border border-blue-100">
+                                <h4 class="text-sm font-semibold text-blue-900 mb-2 flex items-center gap-1">
+                                    <iconify-icon icon="lucide:lightbulb" width="14"></iconify-icon> Opportunities
+                                </h4>
+                                <ul class="list-disc list-inside text-xs text-blue-800 space-y-1">
+                                    <li>B2B partnerships with hotels</li>
+                                    <li>Energy rebate programs</li>
+                                    <li>Developing markets</li>
+                                </ul>
+                            </div>
+
+                            <!-- Threats -->
+                            <div class="p-4 rounded-md bg-amber-50 border border-amber-100">
+                                <h4 class="text-sm font-semibold text-amber-900 mb-2 flex items-center gap-1">
+                                    <iconify-icon icon="lucide:alert-triangle" width="14"></iconify-icon> Threats
+                                </h4>
+                                <ul class="list-disc list-inside text-xs text-amber-800 space-y-1">
+                                    <li>Big tech entering space directly</li>
+                                    <li>Supply chain shortages</li>
+                                    <li>Regulatory changes on IoT</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Legal Considerations -->
+                    <div class="bg-white rounded-lg border border-border p-6 shadow-sm">
+                        <h3 class="text-lg font-semibold text-dark mb-4 flex items-center gap-2">
+                            <iconify-icon icon="lucide:scale" width="20" class="text-secondary"></iconify-icon> 
+                            Legal &amp; Compliance
+                        </h3>
+                        <div class="text-sm text-gray-600 bg-gray-50 p-4 rounded border border-border">
+                            <p class="mb-2"><span class="font-semibold text-dark">IP Status:</span> Provisional Patent Filed (USPTO #63/123,456)</p>
+                            <p class="mb-2"><span class="font-semibold text-dark">Data Privacy:</span> GDPR Compliant, Data stored locally.</p>
+                            <p><span class="font-semibold text-dark">Safety Certifications:</span> Pending UL/CE certification.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Review Panel (40% -> 2/5 cols) -->
+                <div class="col-span-2">
+                    <div class="sticky top-8 bg-white rounded-lg border border-border shadow-card overflow-hidden">
+                        
+                        <!-- Panel Header -->
+                        <div class="bg-gray-50 px-6 py-4 border-b border-border flex items-center justify-between">
+                            <h3 class="font-semibold text-dark">Admin Review</h3>
+                            <span class="text-xs font-medium text-secondary uppercase tracking-wider">ID: #89234</span>
+                        </div>
+
+                        <div class="p-6 space-y-8">
+                            
+                            <!-- Similarity Analysis -->
+                            <section>
+                                <h4 class="text-xs font-semibold text-secondary uppercase tracking-wider mb-3 flex items-center gap-2">
+                                    Similarity Analysis
+                                    <span class="bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded text-[10px]">High Match</span>
+                                </h4>
+                                
+                                <div class="space-y-3">
+                                    <!-- Match 1 -->
+                                    <div class="flex items-start gap-3 p-3 rounded-md border border-border bg-gray-50 hover:border-gray-300 transition-colors">
+                                        <div class="w-10 h-10 rounded bg-white border border-border flex items-center justify-center text-secondary">
+                                            <iconify-icon icon="lucide:thermometer" width="18"></iconify-icon>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex justify-between items-start">
+                                                <p class="text-sm font-medium text-dark truncate">ClimateAI Pro</p>
+                                                <span class="text-xs font-bold text-orange-600">92%</span>
+                                            </div>
+                                            <div class="flex justify-between items-center mt-1">
+                                                <span class="text-xs text-secondary">Published Oct 2024</span>
+                                                <a href="#" class="text-xs text-primary hover:underline">View</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Match 2 -->
+                                    <div class="flex items-start gap-3 p-3 rounded-md border border-border bg-white hover:border-gray-300 transition-colors">
+                                        <div class="w-10 h-10 rounded bg-white border border-border flex items-center justify-center text-secondary">
+                                            <iconify-icon icon="lucide:home" width="18"></iconify-icon>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex justify-between items-start">
+                                                <p class="text-sm font-medium text-dark truncate">Nest Mini Controller</p>
+                                                <span class="text-xs font-bold text-yellow-600">65%</span>
+                                            </div>
+                                            <div class="flex justify-between items-center mt-1">
+                                                <span class="text-xs text-secondary">Published Jan 2025</span>
+                                                <a href="#" class="text-xs text-primary hover:underline">View</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <hr class="border-border">
+
+                            <!-- Review Decision -->
+                            <section>
+                                <h4 class="text-xs font-semibold text-secondary uppercase tracking-wider mb-3">Decision &amp; Feedback</h4>
+                                
+                                <div class="space-y-4">
+                                    <!-- Status Select -->
+                                    <div class="relative">
+                                        <label class="block text-xs font-medium text-secondary mb-1">Status</label>
+                                        <div class="relative">
+                                            <select class="appearance-none block w-full pl-3 pr-10 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary bg-white text-dark font-medium shadow-sm">
+                                                <option value="" disabled="">Select Action...</option>
+                                                <option value="approve">Approve for Publication</option>
+                                                <option value="changes" selected="">Request Changes</option>
+                                                <option value="duplicate">Mark as Duplicate</option>
+                                                <option value="reject">Reject Idea</option>
+                                            </select>
+                                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-secondary">
+                                                <iconify-icon icon="lucide:chevron-down" width="14"></iconify-icon>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Feedback Textarea -->
+                                    <div>
+                                        <label class="block text-xs font-medium text-secondary mb-1">Feedback to Creator</label>
+                                        <textarea rows="4" class="block w-full text-sm border border-border rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary resize-none placeholder-gray-400" placeholder="Explain why changes are needed...">We found a very similar existing project "ClimateAI Pro" (92% match). Please clarify how your "Local AI" feature significantly differentiates from their offline mode.</textarea>
+                                        <p class="mt-1 text-[10px] text-secondary text-right">Visible to user</p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Admin Notes -->
+                            <section>
+                                <h4 class="text-xs font-semibold text-secondary uppercase tracking-wider mb-3 flex items-center gap-1">
+                                    <iconify-icon icon="lucide:lock" width="10"></iconify-icon> Internal Notes
+                                </h4>
+                                <textarea rows="2" class="block w-full text-sm border border-border rounded-md shadow-sm py-2 px-3 bg-yellow-50/50 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary resize-none placeholder-gray-400" placeholder="Private notes for admin team..."></textarea>
+                            </section>
+
+                            <!-- Feature Toggle -->
+                            <div class="flex items-center gap-2">
+                                <input type="checkbox" id="feature" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                <label for="feature" class="text-sm text-dark font-medium select-none">Feature this idea on homepage</label>
+                            </div>
+
+                        </div>
+
+                        <!-- Action Buttons Footer -->
+                        <div class="bg-gray-50 px-6 py-4 border-t border-border flex flex-col gap-3">
+                            <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-blue-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
+                                <iconify-icon icon="lucide:check" width="16" class="mr-2"></iconify-icon>
+                                Approve &amp; Publish
+                            </button>
+                            
+                            <div class="grid grid-cols-2 gap-3">
+                                <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-warning text-sm font-medium rounded-md text-warning bg-white hover:bg-orange-50 focus:outline-none transition-colors">
+                                    <iconify-icon icon="lucide:edit-2" width="16" class="mr-2"></iconify-icon>
+                                    Request Changes
+                                </button>
+                                <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-danger text-sm font-medium rounded-md text-danger bg-white hover:bg-red-50 focus:outline-none transition-colors">
+                                    <iconify-icon icon="lucide:copy" width="16" class="mr-2"></iconify-icon>
+                                    Mark Duplicate
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+
+</body></html>

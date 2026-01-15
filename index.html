@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crowd Builder - Entrepreneurship Platform</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+secondary: '#6B7280',
+success: '#10B981',
+warning: '#F59E0B',
+error: '#EF4444',
+dark: '#111827',
+border: '#E5E7EB',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+},
+spacing: {
+'card': '20px',
+'section': '32px',
+},
+borderRadius: {
+'card': '12px',
+'btn': '8px',
+}
+}
+}
+}
+</script>
+<style>
+/* Custom scrollbar hiding for clean UI */
+.hide-scrollbar::-webkit-scrollbar {
+display: none;
+}
+.hide-scrollbar {
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+</style></head>
+<body class="bg-white text-[#111827] font-sans antialiased selection:bg-primary/20 selection:text-primary">
+
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 w-full h-16 bg-white/90 backdrop-blur-md border-b border-border z-50 flex items-center justify-between px-6 lg:px-12 transition-all duration-300">
+        <div class="flex items-center gap-3">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="bg-primary text-white p-1.5 rounded-lg">
+                    <iconify-icon icon="lucide:layers" width="20" stroke-width="1.5"></iconify-icon>
+                </div>
+                <span class="text-lg font-semibold tracking-tight text-gray-900">CrowdBuilder</span>
+            </a>
+            <span class="bg-gray-100 border border-gray-200 text-gray-500 text-[10px] font-medium px-2 py-0.5 rounded-full ml-2">18+</span>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-8">
+            <a href="#how-it-works" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">How It Works</a>
+            <a href="#browse" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Browse</a>
+            <a href="#categories" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Categories</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+            <button class="hidden sm:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors px-3 py-2">Log in</button>
+            <button class="bg-primary hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-btn transition-all shadow-sm hover:shadow-md active:scale-95">
+                Sign Up
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 min-h-[600px] bg-gradient-to-br from-[#0066FF] via-blue-600 to-indigo-600 text-white overflow-hidden">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
+            <div class="absolute -top-20 -right-20 w-96 h-96 bg-white rounded-full blur-3xl mix-blend-overlay"></div>
+            <div class="absolute bottom-0 left-20 w-72 h-72 bg-blue-300 rounded-full blur-3xl mix-blend-overlay"></div>
+        </div>
+
+        <div class="container mx-auto px-6 lg:px-12 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-3 py-1 mb-6 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-success"></span>
+                    <span class="text-xs font-medium tracking-wide text-white/90 uppercase">Platform for Creators 18+</span>
+                </div>
+                
+                <h1 class="text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.1] mb-6 text-white shadow-sm">
+                    Build ideas together,<br>fund the future.
+                </h1>
+                
+                <p class="text-lg lg:text-xl text-blue-50 leading-relaxed mb-8 max-w-lg font-light">
+                    The premier destination for entrepreneurs to validate concepts, gather feedback, and secure crowd-sourced funding.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="bg-white text-primary hover:bg-gray-50 text-base font-medium px-6 py-3 rounded-btn shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
+                        Get Started
+                        <iconify-icon icon="lucide:arrow-right" width="18" stroke-width="1.5"></iconify-icon>
+                    </button>
+                    <button class="bg-transparent border border-white/30 hover:bg-white/10 text-white text-base font-medium px-6 py-3 rounded-btn transition-colors flex items-center justify-center gap-2 backdrop-blur-sm">
+                        <iconify-icon icon="lucide:compass" width="18" stroke-width="1.5"></iconify-icon>
+                        Browse Ideas
+                    </button>
+                </div>
+
+                <div class="mt-10 flex items-center gap-4 text-sm text-blue-100">
+                    <div class="flex -space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-gray-300 border-2 border-primary"></div>
+                        <div class="w-8 h-8 rounded-full bg-gray-400 border-2 border-primary"></div>
+                        <div class="w-8 h-8 rounded-full bg-gray-500 border-2 border-primary"></div>
+                        <div class="w-8 h-8 rounded-full bg-gray-600 border-2 border-primary flex items-center justify-center text-[10px] font-bold">+2k</div>
+                    </div>
+                    <span>Join 2,000+ founders today</span>
+                </div>
+            </div>
+
+            <!-- Hero Illustration / Abstract UI -->
+            <div class="relative hidden lg:block">
+                <div class="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                    <!-- Fake UI Header -->
+                    <div class="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                        </div>
+                        <div class="h-2 w-20 bg-white/20 rounded-full"></div>
+                    </div>
+                    <!-- Fake Content -->
+                    <div class="space-y-4">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-white/20 flex-shrink-0"></div>
+                            <div class="flex-1 space-y-2">
+                                <div class="h-3 w-3/4 bg-white/30 rounded"></div>
+                                <div class="h-2 w-1/2 bg-white/20 rounded"></div>
+                            </div>
+                        </div>
+                        <div class="h-24 bg-white/5 rounded-lg border border-white/10 p-4">
+                            <div class="h-2 w-full bg-white/10 rounded mb-2"></div>
+                            <div class="h-2 w-full bg-white/10 rounded mb-2"></div>
+                            <div class="h-2 w-2/3 bg-white/10 rounded"></div>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <div class="h-8 w-24 bg-success/80 rounded flex items-center justify-center text-xs font-medium">120% Funded</div>
+                            <div class="flex gap-2 text-white/60">
+                                <iconify-icon icon="lucide:heart" width="20" stroke-width="1.5"></iconify-icon>
+                                <iconify-icon icon="lucide:message-circle" width="20" stroke-width="1.5"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Floating Card -->
+                <div class="absolute -bottom-8 -left-8 bg-white text-dark p-4 rounded-xl shadow-xl border border-gray-100 w-64 animate-bounce" style="animation-duration: 3s;">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 bg-green-100 text-green-600 rounded-lg">
+                            <iconify-icon icon="lucide:trending-up" width="16"></iconify-icon>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-medium">Weekly Growth</p>
+                            <p class="text-lg font-bold text-gray-900">+24.5%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED CAROUSEL -->
+    <section class="py-12 bg-gray-50 border-b border-border overflow-hidden" id="browse">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+                <div>
+                    <h2 class="text-4xl font-semibold tracking-tight text-gray-900 mb-2">Featured Ideas</h2>
+                    <p class="text-secondary">Discover the next big thing before it launches.</p>
+                </div>
+                <div class="flex items-center gap-2 bg-white p-1 rounded-lg border border-border shadow-sm self-start">
+                    <button class="px-3 py-1.5 text-xs font-medium bg-primary text-white rounded shadow-sm">Admin Picks</button>
+                    <button class="px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-50 rounded transition-colors">Hot Discussions</button>
+                    <button class="px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-50 rounded transition-colors">Most Loved</button>
+                </div>
+            </div>
+
+            <!-- Horizontal Scroll Container -->
+            <div class="relative group">
+                <!-- Navigation Arrows -->
+                <button class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 z-10 w-10 h-10 bg-white border border-gray-200 rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-primary transition-all opacity-0 group-hover:opacity-100 hidden lg:flex">
+                    <iconify-icon icon="lucide:chevron-left" width="20"></iconify-icon>
+                </button>
+                <button class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 z-10 w-10 h-10 bg-white border border-gray-200 rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-primary transition-all opacity-0 group-hover:opacity-100 hidden lg:flex">
+                    <iconify-icon icon="lucide:chevron-right" width="20"></iconify-icon>
+                </button>
+
+                <div class="flex gap-6 overflow-x-auto hide-scrollbar pb-8 snap-x">
+                    <!-- Card 1 -->
+                    <div class="min-w-[280px] w-[280px] bg-white rounded-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 snap-center cursor-pointer group/card flex flex-col">
+                        <div class="h-32 bg-gray-100 rounded-t-card relative overflow-hidden">
+                             <div class="absolute inset-0 flex items-center justify-center text-gray-300">
+                                <iconify-icon icon="lucide:image" width="32"></iconify-icon>
+                             </div>
+                             <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-primary border border-primary/20">NEW</div>
+                        </div>
+                        <div class="p-card flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-5 h-5 rounded-full bg-gradient-to-r from-purple-400 to-pink-400"></div>
+                                <span class="text-xs text-gray-500 font-medium">Sarah Tech</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-1 leading-snug group-hover/card:text-primary transition-colors">EcoStream AI</h4>
+                            <p class="text-sm text-secondary line-clamp-2 mb-4">Optimizing energy consumption for large data centers using predictive models.</p>
+                            <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div class="flex items-center gap-1.5 text-secondary hover:text-primary transition-colors">
+                                    <iconify-icon icon="lucide:arrow-big-up" width="20"></iconify-icon>
+                                    <span class="text-sm font-semibold">428</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-gray-400 text-xs">
+                                    <iconify-icon icon="lucide:message-square" width="14"></iconify-icon>
+                                    <span>24</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="min-w-[280px] w-[280px] bg-white rounded-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 snap-center cursor-pointer group/card flex flex-col">
+                        <div class="h-32 bg-gray-100 rounded-t-card relative overflow-hidden">
+                             <div class="absolute inset-0 flex items-center justify-center text-gray-300">
+                                <iconify-icon icon="lucide:cpu" width="32"></iconify-icon>
+                             </div>
+                        </div>
+                        <div class="p-card flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-5 h-5 rounded-full bg-gradient-to-r from-blue-400 to-teal-400"></div>
+                                <span class="text-xs text-gray-500 font-medium">DevCore</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-1 leading-snug group-hover/card:text-primary transition-colors">DevFlow</h4>
+                            <p class="text-sm text-secondary line-clamp-2 mb-4">A unified dashboard for freelance developers to manage clients and code.</p>
+                            <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div class="flex items-center gap-1.5 text-secondary hover:text-primary transition-colors">
+                                    <iconify-icon icon="lucide:arrow-big-up" width="20"></iconify-icon>
+                                    <span class="text-sm font-semibold">892</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-gray-400 text-xs">
+                                    <iconify-icon icon="lucide:message-square" width="14"></iconify-icon>
+                                    <span>112</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="min-w-[280px] w-[280px] bg-white rounded-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 snap-center cursor-pointer group/card flex flex-col">
+                        <div class="h-32 bg-gray-100 rounded-t-card relative overflow-hidden">
+                             <div class="absolute inset-0 flex items-center justify-center text-gray-300">
+                                <iconify-icon icon="lucide:shopping-bag" width="32"></iconify-icon>
+                             </div>
+                             <div class="absolute top-3 right-3 bg-success/10 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-success border border-success/20">FUNDED</div>
+                        </div>
+                        <div class="p-card flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-5 h-5 rounded-full bg-gradient-to-r from-orange-400 to-red-400"></div>
+                                <span class="text-xs text-gray-500 font-medium">MarketPro</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-1 leading-snug group-hover/card:text-primary transition-colors">LocalMarket</h4>
+                            <p class="text-sm text-secondary line-clamp-2 mb-4">Connecting local farmers directly to consumers with zero platform fees.</p>
+                            <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div class="flex items-center gap-1.5 text-success hover:text-success/80 transition-colors">
+                                    <iconify-icon icon="lucide:check-circle-2" width="18"></iconify-icon>
+                                    <span class="text-sm font-semibold">1.2k</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-gray-400 text-xs">
+                                    <iconify-icon icon="lucide:message-square" width="14"></iconify-icon>
+                                    <span>340</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="min-w-[280px] w-[280px] bg-white rounded-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 snap-center cursor-pointer group/card flex flex-col">
+                        <div class="h-32 bg-gray-100 rounded-t-card relative overflow-hidden">
+                             <div class="absolute inset-0 flex items-center justify-center text-gray-300">
+                                <iconify-icon icon="lucide:music" width="32"></iconify-icon>
+                             </div>
+                        </div>
+                        <div class="p-card flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-5 h-5 rounded-full bg-gradient-to-r from-indigo-400 to-purple-400"></div>
+                                <span class="text-xs text-gray-500 font-medium">AudioLab</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-1 leading-snug group-hover/card:text-primary transition-colors">SoundSync</h4>
+                            <p class="text-sm text-secondary line-clamp-2 mb-4">Real-time collaborative audio editing in the browser using WebAssembly.</p>
+                            <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div class="flex items-center gap-1.5 text-secondary hover:text-primary transition-colors">
+                                    <iconify-icon icon="lucide:arrow-big-up" width="20"></iconify-icon>
+                                    <span class="text-sm font-semibold">256</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-gray-400 text-xs">
+                                    <iconify-icon icon="lucide:message-square" width="14"></iconify-icon>
+                                    <span>18</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Placeholder Card to show scroll -->
+                     <div class="min-w-[100px] flex items-center justify-center">
+                        <a href="#" class="text-primary font-medium text-sm hover:underline">View All →</a>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="py-12 bg-white" id="how-it-works">
+        <div class="container mx-auto px-6 lg:px-12">
+            <h2 class="text-4xl font-semibold tracking-tight text-gray-900 mb-12 text-center">How Crowd Builder Works</h2>
+            
+            <div class="grid md:grid-cols-3 gap-12 relative">
+                <!-- Connector Line (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-1/6 w-2/3 h-0.5 border-t-2 border-dashed border-gray-200 z-0 translate-x-[16.66%]"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 border border-blue-100 shadow-sm">
+                        <iconify-icon icon="lucide:lightbulb" class="text-primary" width="40" stroke-width="1.5"></iconify-icon>
+                    </div>
+                    <span class="inline-block px-3 py-1 mb-3 text-xs font-semibold text-primary bg-blue-50 rounded-full border border-blue-100">Step 01</span>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-3 tracking-tight">Share Your Idea</h4>
+                    <p class="text-secondary text-base leading-relaxed max-w-xs">Draft your proposal, set funding goals, and publish to the community for validation.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 border border-blue-100 shadow-sm">
+                        <iconify-icon icon="lucide:users" class="text-primary" width="40" stroke-width="1.5"></iconify-icon>
+                    </div>
+                    <span class="inline-block px-3 py-1 mb-3 text-xs font-semibold text-primary bg-blue-50 rounded-full border border-blue-100">Step 02</span>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-3 tracking-tight">Gather Feedback</h4>
+                    <p class="text-secondary text-base leading-relaxed max-w-xs">Engage with early adopters, refine your pitch through discussions, and build hype.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 border border-blue-100 shadow-sm">
+                        <iconify-icon icon="lucide:rocket" class="text-primary" width="40" stroke-width="1.5"></iconify-icon>
+                    </div>
+                    <span class="inline-block px-3 py-1 mb-3 text-xs font-semibold text-primary bg-blue-50 rounded-full border border-blue-100">Step 03</span>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-3 tracking-tight">Get Funded</h4>
+                    <p class="text-secondary text-base leading-relaxed max-w-xs">Launch your funding campaign and turn your validated concept into reality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES GRID -->
+    <section class="py-12 bg-gray-50 border-t border-border" id="categories">
+        <div class="container mx-auto px-6 lg:px-12">
+            <h2 class="text-4xl font-semibold tracking-tight text-gray-900 mb-10">Explore by Category</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Category Item -->
+                <a href="#" class="group bg-white p-6 rounded-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+                    <div class="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-blue-50 flex items-center justify-center mb-4 transition-colors">
+                        <iconify-icon icon="lucide:smartphone" class="text-gray-600 group-hover:text-primary transition-colors" width="24"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-1 tracking-tight">Mobile Apps</h4>
+                    <p class="text-sm text-secondary">1,240+ Ideas</p>
+                </a>
+
+                <a href="#" class="group bg-white p-6 rounded-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+                    <div class="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-blue-50 flex items-center justify-center mb-4 transition-colors">
+                        <iconify-icon icon="lucide:monitor" class="text-gray-600 group-hover:text-primary transition-colors" width="24"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-1 tracking-tight">SaaS</h4>
+                    <p class="text-sm text-secondary">890+ Ideas</p>
+                </a>
+
+                <a href="#" class="group bg-white p-6 rounded-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+                    <div class="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-blue-50 flex items-center justify-center mb-4 transition-colors">
+                        <iconify-icon icon="lucide:shopping-cart" class="text-gray-600 group-hover:text-primary transition-colors" width="24"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-1 tracking-tight">E-Commerce</h4>
+                    <p class="text-sm text-secondary">560+ Ideas</p>
+                </a>
+
+                <a href="#" class="group bg-white p-6 rounded-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+                    <div class="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-blue-50 flex items-center justify-center mb-4 transition-colors">
+                        <iconify-icon icon="lucide:cpu" class="text-gray-600 group-hover:text-primary transition-colors" width="24"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-1 tracking-tight">Hardware</h4>
+                    <p class="text-sm text-secondary">320+ Ideas</p>
+                </a>
+                
+                <a href="#" class="group bg-white p-6 rounded-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+                    <div class="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-blue-50 flex items-center justify-center mb-4 transition-colors">
+                        <iconify-icon icon="lucide:heart-pulse" class="text-gray-600 group-hover:text-primary transition-colors" width="24"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-1 tracking-tight">Health &amp; Fit</h4>
+                    <p class="text-sm text-secondary">410+ Ideas</p>
+                </a>
+
+                <a href="#" class="group bg-white p-6 rounded-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+                    <div class="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-blue-50 flex items-center justify-center mb-4 transition-colors">
+                        <iconify-icon icon="lucide:globe" class="text-gray-600 group-hover:text-primary transition-colors" width="24"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-1 tracking-tight">Social Impact</h4>
+                    <p class="text-sm text-secondary">280+ Ideas</p>
+                </a>
+
+                <a href="#" class="group bg-white p-6 rounded-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+                    <div class="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-blue-50 flex items-center justify-center mb-4 transition-colors">
+                        <iconify-icon icon="lucide:book-open" class="text-gray-600 group-hover:text-primary transition-colors" width="24"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-1 tracking-tight">EdTech</h4>
+                    <p class="text-sm text-secondary">350+ Ideas</p>
+                </a>
+
+                <a href="#" class="group bg-white p-6 rounded-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+                    <div class="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-blue-50 flex items-center justify-center mb-4 transition-colors">
+                        <iconify-icon icon="lucide:gamepad-2" class="text-gray-600 group-hover:text-primary transition-colors" width="24"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-1 tracking-tight">Gaming</h4>
+                    <p class="text-sm text-secondary">670+ Ideas</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="py-12 bg-dark text-white">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-primary">
+                        <iconify-icon icon="lucide:layers" width="24"></iconify-icon>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-semibold tracking-tight">15k+</div>
+                        <div class="text-sm text-gray-400 font-medium">Total Ideas</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-success">
+                        <iconify-icon icon="lucide:users" width="24"></iconify-icon>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-semibold tracking-tight">85k</div>
+                        <div class="text-sm text-gray-400 font-medium">Active Users</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-warning">
+                        <iconify-icon icon="lucide:coins" width="24"></iconify-icon>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-semibold tracking-tight">450+</div>
+                        <div class="text-sm text-gray-400 font-medium">Ideas Funded</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-primary">
+                        <iconify-icon icon="lucide:trophy" width="24"></iconify-icon>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-semibold tracking-tight">120</div>
+                        <div class="text-sm text-gray-400 font-medium">Success Stories</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="py-20 bg-gradient-to-br from-[#0066FF] to-blue-700 text-center text-white">
+        <div class="container mx-auto px-6 lg:px-12 max-w-3xl">
+            <h2 class="text-4xl font-semibold tracking-tight mb-6">Ready to share your idea with the world?</h2>
+            <p class="text-xl text-blue-100 mb-10 font-light">Join the fastest growing community of makers and entrepreneurs. Start your journey today.</p>
+            <button class="bg-white text-primary text-lg font-semibold px-8 py-4 rounded-btn shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all">
+                Start Building Now
+            </button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark pt-16 pb-8 border-t border-gray-800">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-1">
+                    <a href="#" class="flex items-center gap-2 mb-4">
+                        <div class="bg-primary text-white p-1.5 rounded-lg">
+                             <iconify-icon icon="lucide:layers" width="20"></iconify-icon>
+                        </div>
+                        <span class="text-lg font-semibold text-white tracking-tight">CrowdBuilder</span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Empowering entrepreneurs to build, test, and fund the technologies of tomorrow.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <iconify-icon icon="lucide:twitter" width="20"></iconify-icon>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <iconify-icon icon="lucide:github" width="20"></iconify-icon>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <iconify-icon icon="lucide:linkedin" width="20"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Platform</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors">Browse Ideas</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">How It Works</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Success Stories</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Company</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Legal</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-gray-500 text-sm">© 2023 Crowd Builder Inc. All rights reserved.</p>
+                <div class="flex items-center gap-2 bg-gray-800 px-3 py-1 rounded-full border border-gray-700">
+                    <span class="text-gray-400 text-xs">18+ Content</span>
+                    <div class="w-2 h-2 rounded-full bg-primary"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body></html>

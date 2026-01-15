@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMS - CrowdBuilder Admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+primaryLight: '#E5F0FF',
+primaryHover: '#0052CC',
+secondary: '#6B7280',
+dark: '#111827',
+border: '#E5E7EB',
+surface: '#FFFFFF',
+bg: '#F9FAFB',
+success: '#10B981',
+warning: '#F59E0B',
+danger: '#EF4444',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+},
+boxShadow: {
+'soft': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+'floating': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+}
+}
+}
+}
+</script>
+<style>
+body { font-size: 16px; }
+.sidebar-scroll::-webkit-scrollbar { width: 4px; }
+.sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background-color: #E5E7EB; border-radius: 20px; }
+/* Editor Typography Styles */
+.editor-content h1 { font-size: 2.25rem; font-weight: 700; color: #111827; margin-bottom: 1rem; letter-spacing: -0.025em; }
+.editor-content h2 { font-size: 1.5rem; font-weight: 600; color: #111827; margin-top: 2rem; margin-bottom: 1rem; letter-spacing: -0.025em; }
+.editor-content h3 { font-size: 1.25rem; font-weight: 600; color: #111827; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+.editor-content p { color: #374151; margin-bottom: 1rem; line-height: 1.6; }
+.editor-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #374151; }
+.editor-content li { margin-bottom: 0.5rem; }
+/* Custom Scrollbar for History Panel */
+.history-scroll::-webkit-scrollbar { width: 4px; }
+.history-scroll::-webkit-scrollbar-thumb { background-color: #E5E7EB; border-radius: 20px; }
+</style></head>
+<body class="bg-bg font-sans text-dark antialiased min-h-screen flex selection:bg-primary/20 selection:text-primary">
+
+    <!-- ADMIN SIDEBAR (Fixed 200px) -->
+    <aside class="w-[200px] h-screen bg-surface border-r border-border flex flex-col fixed left-0 top-0 z-40 shadow-sm">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-5 border-b border-border/50">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-primary flex items-center justify-center text-white">
+                    <iconify-icon icon="lucide:layers" width="14" stroke-width="2.5"></iconify-icon>
+                </div>
+                <span class="font-semibold text-sm tracking-tight text-dark">CrowdBuilder</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto sidebar-scroll py-6 px-3 space-y-8">
+            <!-- Section: Overview -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Overview</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:layout-dashboard" width="18"></iconify-icon>
+                            Admin Home
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Content -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Content</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:list-todo" width="18"></iconify-icon>
+                            Pending Queue
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:star" width="18"></iconify-icon>
+                            Featured
+                        </a>
+                    </li>
+                    <li>
+                        <!-- ACTIVE STATE -->
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md bg-primary/5 text-primary text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:pen-tool" width="18"></iconify-icon>
+                            CMS
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Users -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Users</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:users" width="18"></iconify-icon>
+                            Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:flag" width="18"></iconify-icon>
+                            Reports
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Documents -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Documents</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:file-text" width="18"></iconify-icon>
+                            Doc Management
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <div class="ml-[200px] flex w-full h-screen overflow-hidden">
+        
+        <!-- CENTER CONTENT (Editor) -->
+        <main class="flex-1 flex flex-col min-w-0 bg-bg overflow-y-auto pb-24 relative">
+            <div class="max-w-5xl mx-auto w-full px-8 py-10">
+                
+                <!-- Page Header -->
+                <div class="mb-8">
+                    <h2 class="text-[36px] font-semibold text-dark tracking-tight leading-tight">Content Management</h2>
+                    <p class="text-secondary mt-1">Manage static pages and legal documents.</p>
+                </div>
+
+                <!-- Page Selector Tabs -->
+                <div class="mb-6 border-b border-border">
+                    <nav class="-mb-px flex space-x-8 overflow-x-auto" aria-label="Tabs">
+                        <a href="#" class="border-transparent text-secondary hover:border-gray-300 hover:text-dark whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium transition-colors">
+                            Landing Page
+                            <span class="block text-[10px] font-normal text-gray-400 mt-0.5">2d ago</span>
+                        </a>
+                        <!-- Active Tab -->
+                        <a href="#" class="border-primary text-primary whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium" aria-current="page">
+                            How It Works
+                            <span class="block text-[10px] font-normal text-primary/70 mt-0.5">Edited 2h ago</span>
+                        </a>
+                        <a href="#" class="border-transparent text-secondary hover:border-gray-300 hover:text-dark whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium transition-colors">
+                            Privacy Policy
+                            <span class="block text-[10px] font-normal text-gray-400 mt-0.5">Oct 24</span>
+                        </a>
+                        <a href="#" class="border-transparent text-secondary hover:border-gray-300 hover:text-dark whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium transition-colors">
+                            Terms of Service
+                            <span class="block text-[10px] font-normal text-gray-400 mt-0.5">Oct 24</span>
+                        </a>
+                        <a href="#" class="border-transparent text-secondary hover:border-gray-300 hover:text-dark whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium transition-colors">
+                            FAQ
+                            <span class="block text-[10px] font-normal text-gray-400 mt-0.5">1w ago</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Editor Card -->
+                <div class="bg-surface border border-border rounded-xl shadow-soft overflow-hidden">
+                    
+                    <!-- Editor Header inputs -->
+                    <div class="p-6 pb-4 border-b border-border bg-white flex justify-between items-start">
+                        <div class="flex-1 mr-6">
+                            <label for="page-title" class="sr-only">Page Title</label>
+                            <input type="text" name="page-title" id="page-title" class="block w-full border-0 p-0 text-dark text-3xl font-bold placeholder:text-gray-300 focus:ring-0 sm:leading-tight" placeholder="Page Title" value="How It Works">
+                            <div class="mt-2 text-sm text-gray-400 flex items-center gap-2">
+                                <iconify-icon icon="lucide:link" width="14"></iconify-icon>
+                                <span>/pages/how-it-works</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-gray-100 p-1 rounded-lg">
+                            <button class="px-3 py-1.5 rounded-md bg-white shadow-sm text-xs font-semibold text-dark transition-all">Edit</button>
+                            <button class="px-3 py-1.5 rounded-md text-xs font-medium text-secondary hover:text-dark transition-all">Preview</button>
+                        </div>
+                    </div>
+
+                    <!-- Toolbar -->
+                    <div class="px-4 py-2 border-b border-border bg-gray-50/50 flex flex-wrap gap-1 items-center sticky top-0 z-10">
+                        
+                        <!-- History/Undo -->
+                        <div class="flex items-center gap-0.5 pr-2 border-r border-gray-200 mr-2">
+                            <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-200 rounded transition-colors" title="Undo">
+                                <iconify-icon icon="lucide:undo-2" width="18"></iconify-icon>
+                            </button>
+                            <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-200 rounded transition-colors" title="Redo">
+                                <iconify-icon icon="lucide:redo-2" width="18"></iconify-icon>
+                            </button>
+                        </div>
+
+                        <!-- Text Format -->
+                        <div class="flex items-center gap-0.5 pr-2 border-r border-gray-200 mr-2">
+                            <div class="relative group">
+                                <button class="flex items-center gap-1 p-1.5 px-2 text-dark hover:bg-gray-200 rounded transition-colors text-sm font-medium w-24 justify-between">
+                                    Paragraph
+                                    <iconify-icon icon="lucide:chevron-down" width="14" class="text-gray-400"></iconify-icon>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Styling -->
+                        <div class="flex items-center gap-0.5 pr-2 border-r border-gray-200 mr-2">
+                            <button class="p-1.5 text-dark bg-gray-200 rounded transition-colors" title="Bold">
+                                <iconify-icon icon="lucide:bold" width="18"></iconify-icon>
+                            </button>
+                            <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-200 rounded transition-colors" title="Italic">
+                                <iconify-icon icon="lucide:italic" width="18"></iconify-icon>
+                            </button>
+                            <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-200 rounded transition-colors" title="Underline">
+                                <iconify-icon icon="lucide:underline" width="18"></iconify-icon>
+                            </button>
+                        </div>
+
+                        <!-- Lists & Align -->
+                        <div class="flex items-center gap-0.5 pr-2 border-r border-gray-200 mr-2">
+                            <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-200 rounded transition-colors" title="Bullet List">
+                                <iconify-icon icon="lucide:list" width="18"></iconify-icon>
+                            </button>
+                            <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-200 rounded transition-colors" title="Numbered List">
+                                <iconify-icon icon="lucide:list-ordered" width="18"></iconify-icon>
+                            </button>
+                        </div>
+
+                        <!-- Insert -->
+                        <div class="flex items-center gap-0.5">
+                            <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-200 rounded transition-colors" title="Link">
+                                <iconify-icon icon="lucide:link" width="18"></iconify-icon>
+                            </button>
+                            <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-200 rounded transition-colors" title="Image">
+                                <iconify-icon icon="lucide:image" width="18"></iconify-icon>
+                            </button>
+                            <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-200 rounded transition-colors" title="Video">
+                                <iconify-icon icon="lucide:video" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Editing Area -->
+                    <div class="min-h-[600px] p-8 bg-white focus:outline-none editor-content" contenteditable="true">
+                        <h2>Build Together, Succeed Together</h2>
+                        <p>CrowdBuilder transforms the lonely journey of entrepreneurship into a collaborative adventure. Here is how you can get started in three simple steps.</p>
+                        
+                        <div class="my-8 h-px bg-gray-100 w-full"></div>
+
+                        <h3>1. Share Your Vision</h3>
+                        <p>It starts with a spark. Post your startup idea, project concept, or business problem you are trying to solve. Use our structured templates to articulate:</p>
+                        <ul>
+                            <li>The core problem you are addressing</li>
+                            <li>Your proposed solution</li>
+                            <li>The skills you need (e.g., developers, marketers, legal)</li>
+                        </ul>
+
+                        <h3>2. Build Your Team</h3>
+                        <p>Browse profiles of talented individuals looking to join exciting projects. Our matching algorithm suggests users with the complementary skills you need. Send connection requests and start chatting instantly.</p>
+
+                        <h3>3. Launch &amp; Iterate</h3>
+                        <p>Use our built-in project management tools to track milestones. Gather feedback from the wider community and refine your product before the big launch.</p>
+                        
+                        <div class="my-8 p-4 bg-blue-50 border border-blue-100 rounded-lg text-blue-900 text-sm flex gap-3">
+                            <iconify-icon icon="lucide:info" width="20" class="shrink-0"></iconify-icon>
+                            <div>
+                                <strong>Pro Tip:</strong> Projects with a clear video pitch receive 4x more engagement than text-only submissions.
+                            </div>
+                        </div>
+                        
+                        <p>Ready to start? <a href="#" class="text-primary underline">Create your first project today.</a></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- RIGHT SIDEBAR (Version History) -->
+        <aside class="w-[280px] bg-surface border-l border-border h-full flex flex-col z-20 shadow-[-1px_0_3px_rgba(0,0,0,0.02)]">
+            <div class="p-5 border-b border-border flex justify-between items-center bg-gray-50/50">
+                <h3 class="font-semibold text-sm text-dark">Version History</h3>
+                <iconify-icon icon="lucide:history" class="text-secondary" width="16"></iconify-icon>
+            </div>
+            
+            <div class="flex-1 overflow-y-auto p-4 history-scroll space-y-6">
+                
+                <!-- Timeline Group: Today -->
+                <div>
+                    <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Today</h4>
+                    
+                    <!-- Item 1: Current -->
+                    <div class="relative pl-4 pb-0">
+                        <!-- Timeline Line -->
+                        <div class="absolute left-0 top-1.5 bottom-0 w-px bg-gray-200"></div>
+                        <!-- Dot -->
+                        <div class="absolute left-[-2.5px] top-1.5 h-1.5 w-1.5 rounded-full bg-primary ring-4 ring-white"></div>
+                        
+                        <div class="mb-4">
+                            <div class="flex items-center justify-between mb-0.5">
+                                <span class="text-sm font-medium text-dark">10:42 AM</span>
+                                <span class="inline-flex items-center rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-medium text-emerald-700 ring-1 ring-inset ring-emerald-600/20">Current</span>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="h-4 w-4 rounded-full bg-blue-100 flex items-center justify-center text-[8px] font-bold text-blue-700">JS</div>
+                                <span class="text-xs text-secondary">John Smith</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-2">Updated "Section 2" copy and added styling.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Group: Yesterday -->
+                <div>
+                    <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Yesterday</h4>
+                    
+                    <!-- Item 2 -->
+                    <div class="relative pl-4 pb-4 group">
+                        <!-- Timeline Line -->
+                        <div class="absolute left-0 top-1.5 bottom-0 w-px bg-gray-200"></div>
+                        <!-- Dot -->
+                        <div class="absolute left-[-2.5px] top-1.5 h-1.5 w-1.5 rounded-full bg-gray-300 ring-4 ring-white group-hover:bg-primary transition-colors"></div>
+                        
+                        <div class="mb-1">
+                            <div class="flex items-center justify-between mb-0.5">
+                                <span class="text-sm font-medium text-secondary group-hover:text-dark transition-colors">4:15 PM</span>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="h-4 w-4 rounded-full bg-purple-100 flex items-center justify-center text-[8px] font-bold text-purple-700">AK</div>
+                                <span class="text-xs text-secondary">Alice Kim</span>
+                            </div>
+                            <p class="text-xs text-gray-500">Fixed typo in introduction.</p>
+                        </div>
+                        <button class="opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-medium text-primary hover:text-primaryHover underline">Restore this version</button>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="relative pl-4 pb-0 group">
+                        <!-- Timeline Line (Fade out) -->
+                        <div class="absolute left-0 top-1.5 h-full w-px bg-gradient-to-b from-gray-200 to-transparent"></div>
+                        <!-- Dot -->
+                        <div class="absolute left-[-2.5px] top-1.5 h-1.5 w-1.5 rounded-full bg-gray-300 ring-4 ring-white group-hover:bg-primary transition-colors"></div>
+                        
+                        <div class="mb-1">
+                            <div class="flex items-center justify-between mb-0.5">
+                                <span class="text-sm font-medium text-secondary group-hover:text-dark transition-colors">9:30 AM</span>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="h-4 w-4 rounded-full bg-blue-100 flex items-center justify-center text-[8px] font-bold text-blue-700">JS</div>
+                                <span class="text-xs text-secondary">John Smith</span>
+                            </div>
+                            <p class="text-xs text-gray-500">Initial content draft.</p>
+                        </div>
+                        <button class="opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-medium text-primary hover:text-primaryHover underline">Restore this version</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- STICKY ACTION BAR (Bottom) -->
+        <div class="fixed bottom-0 right-0 left-[200px] z-30 bg-white border-t border-border px-8 py-4 flex items-center justify-between shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.02)]">
+            <div class="flex items-center gap-2 text-sm text-secondary">
+                <iconify-icon icon="lucide:check-circle" class="text-emerald-500" width="16"></iconify-icon>
+                <span>Last saved: Today at 10:42 AM</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <button class="rounded-lg bg-white px-4 py-2 text-sm font-medium text-secondary shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 transition-colors">
+                    Preview Page
+                </button>
+                <button class="rounded-lg bg-white px-4 py-2 text-sm font-medium text-dark shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 transition-colors">
+                    Save Draft
+                </button>
+                <button class="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primaryHover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors">
+                    Publish Changes
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+
+</body></html>

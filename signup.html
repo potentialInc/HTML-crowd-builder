@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up - Crowd Builder</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+/* Custom checkbox style */
+.custom-checkbox:checked {
+background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+}
+/* Hide scrollbar for cleaner look */
+.no-scrollbar::-webkit-scrollbar {
+display: none;
+}
+.no-scrollbar {
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+</style></head>
+<body class="bg-white text-slate-900 font-sans antialiased h-screen w-screen overflow-hidden selection:bg-blue-100 selection:text-blue-900" style="font-family: 'Inter', sans-serif;">
+
+    <div class="flex min-h-full h-full">
+        
+        <!-- Left Panel: Blue Gradient (40% width) -->
+        <div class="hidden lg:flex flex-col justify-between w-2/5 relative bg-[#0066FF] px-12 py-12 overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 bg-gradient-to-br from-[#0066FF] to-blue-700 z-0"></div>
+            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light z-0"></div>
+            
+            <!-- Abstract Shapes -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-white opacity-10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-400 rounded-full blur-3xl opacity-20"></div>
+
+            <!-- Header/Logo -->
+            <div class="relative z-10 flex items-center gap-2">
+                <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-2 rounded-lg text-white">
+                    <span class="iconify" data-icon="lucide:layers" data-width="24" data-height="24" data-stroke-width="1.5"></span>
+                </div>
+                <span class="text-xl font-semibold tracking-tight text-white">Crowd Builder</span>
+            </div>
+
+            <!-- Middle Content -->
+            <div class="relative z-10 max-w-md">
+                <h2 class="text-4xl font-semibold tracking-tight text-white mb-4">Join our community of innovators.</h2>
+                <p class="text-blue-100 text-lg leading-relaxed">
+                    Build connections, launch projects, and scale your ideas with tools designed for the next generation of creators.
+                </p>
+                
+                <!-- Testimonial Pill -->
+                <div class="mt-8 flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-3 pr-5 w-fit">
+                    <div class="flex -space-x-2">
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-[#0066FF]" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=64&amp;h=64" alt="">
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-[#0066FF]" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=64&amp;h=64" alt="">
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-[#0066FF]" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=64&amp;h=64" alt="">
+                    </div>
+                    <div class="text-sm text-white font-medium">Joined by 10k+ creators</div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="relative z-10 flex items-center justify-between text-sm text-blue-200">
+                <span>© 2023 Crowd Builder Inc.</span>
+            </div>
+        </div>
+
+        <!-- Right Panel: Registration Form (60% width) -->
+        <div class="flex-1 flex flex-col items-center justify-center bg-white h-full relative overflow-y-auto no-scrollbar w-full lg:w-3/5">
+            
+            <div class="w-full max-w-lg px-6 py-12 lg:px-8">
+                
+                <!-- Mobile Logo -->
+                <div class="lg:hidden mb-8 flex items-center gap-2">
+                    <div class="bg-[#0066FF] p-1.5 rounded-lg text-white">
+                        <span class="iconify" data-icon="lucide:layers" data-width="20" data-height="20" data-stroke-width="1.5"></span>
+                    </div>
+                    <span class="text-lg font-semibold tracking-tight text-slate-900">Crowd Builder</span>
+                </div>
+
+                <!-- Headers -->
+                <div class="text-left mb-8">
+                    <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900 mb-2">Create your account</h1>
+                    <p class="text-base text-slate-500">Join our community of innovators today.</p>
+                </div>
+
+                <form action="#" method="POST" class="space-y-5">
+                    
+                    <!-- Full Name -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-700 mb-1.5">Full Name</label>
+                        <input type="text" id="name" name="name" class="block w-full h-12 rounded-lg border border-slate-200 px-4 text-base shadow-sm placeholder:text-slate-400 focus:border-[#0066FF] focus:outline-none focus:ring-1 focus:ring-[#0066FF] transition-all bg-white text-slate-900" placeholder="John Doe">
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-700 mb-1.5">Email address</label>
+                        <input type="email" id="email" name="email" class="block w-full h-12 rounded-lg border border-slate-200 px-4 text-base shadow-sm placeholder:text-slate-400 focus:border-[#0066FF] focus:outline-none focus:ring-1 focus:ring-[#0066FF] transition-all bg-white text-slate-900" placeholder="you@example.com">
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-slate-700 mb-1.5">Password</label>
+                        <div class="relative">
+                            <input type="password" id="password" name="password" class="block w-full h-12 rounded-lg border border-slate-200 px-4 pr-10 text-base shadow-sm placeholder:text-slate-400 focus:border-[#0066FF] focus:outline-none focus:ring-1 focus:ring-[#0066FF] transition-all bg-white text-slate-900" placeholder="••••••••">
+                            <button type="button" class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400 hover:text-slate-600">
+                                <span class="iconify" data-icon="lucide:eye" data-width="20" data-stroke-width="1.5"></span>
+                            </button>
+                        </div>
+                        
+                        <!-- Strength Indicator -->
+                        <div class="flex gap-1 mt-2">
+                            <div class="h-1 w-full rounded-full bg-emerald-500"></div>
+                            <div class="h-1 w-full rounded-full bg-emerald-500"></div>
+                            <div class="h-1 w-full rounded-full bg-slate-200"></div>
+                            <div class="h-1 w-full rounded-full bg-slate-200"></div>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2 flex gap-3">
+                            <span>• 8+ characters</span>
+                            <span>• Uppercase</span>
+                            <span>• Number</span>
+                        </p>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div>
+                        <label for="confirm-password" class="block text-sm font-medium text-slate-700 mb-1.5">Confirm Password</label>
+                        <div class="relative">
+                            <input type="password" id="confirm-password" name="confirm-password" class="block w-full h-12 rounded-lg border border-slate-200 px-4 text-base shadow-sm placeholder:text-slate-400 focus:border-[#0066FF] focus:outline-none focus:ring-1 focus:ring-[#0066FF] transition-all bg-white text-slate-900" placeholder="••••••••">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 text-emerald-500">
+                                <span class="iconify" data-icon="lucide:check-circle-2" data-width="20" data-stroke-width="1.5"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms Checkbox -->
+                    <div class="flex items-start">
+                        <div class="flex h-6 items-center">
+                            <input id="terms" name="terms" type="checkbox" class="custom-checkbox h-4 w-4 rounded border-slate-300 text-[#0066FF] focus:ring-[#0066FF] focus:ring-offset-0 cursor-pointer appearance-none border checked:bg-[#0066FF] checked:border-[#0066FF] transition-all bg-white">
+                        </div>
+                        <div class="ml-3 text-sm">
+                            <label for="terms" class="text-slate-500">I agree to the <a href="#" class="font-medium text-slate-900 hover:underline">Terms of Service</a> and <a href="#" class="font-medium text-slate-900 hover:underline">Privacy Policy</a>.</label>
+                        </div>
+                    </div>
+
+                    <!-- Primary Button -->
+                    <button type="submit" class="flex w-full h-12 items-center justify-center rounded-lg bg-[#0066FF] text-base font-medium text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0066FF] transition-all duration-200">
+                        Create Account
+                    </button>
+
+                    <!-- Divider -->
+                    <div class="relative py-2">
+                        <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                            <div class="w-full border-t border-slate-200"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="bg-white px-2 text-slate-500">Or continue with</span>
+                        </div>
+                    </div>
+
+                    <!-- Social Buttons -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Google -->
+                        <button type="button" class="flex w-full h-12 items-center justify-center gap-2 rounded-lg bg-white border border-slate-200 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-200 transition-all">
+                            <span class="iconify" data-icon="logos:google-icon" data-width="18"></span>
+                            <span>Google</span>
+                        </button>
+                        <!-- Apple (Black BG) -->
+                        <button type="button" class="flex w-full h-12 items-center justify-center gap-2 rounded-lg bg-slate-900 text-sm font-medium text-white shadow-sm hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 transition-all">
+                            <span class="iconify" data-icon="lucide:apple" data-width="20" data-stroke-width="1.5" data-fill="currentColor"></span>
+                            <span>Apple</span>
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Age Verification & Login Link -->
+                <div class="mt-8 text-center space-y-4">
+                    <div class="inline-flex items-center gap-1.5 rounded-full bg-slate-50 px-3 py-1 text-xs font-medium text-slate-500 border border-slate-100">
+                        <span class="iconify" data-icon="lucide:shield-check" data-width="14" data-stroke-width="1.5"></span>
+                        You must be 18+ to use this platform
+                    </div>
+                    
+                    <p class="text-sm text-slate-500">
+                        Already have an account?
+                        <a href="#" class="font-medium text-[#0066FF] hover:text-blue-700 transition-colors">Sign in</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body></html>

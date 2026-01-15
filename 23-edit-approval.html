@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Review: Smart AC Controller - CrowdBuilder Admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+primaryLight: '#E5F0FF',
+secondary: '#6B7280',
+dark: '#111827',
+border: '#E5E7EB',
+surface: '#FFFFFF',
+bg: '#F9FAFB',
+success: '#10B981',
+danger: '#EF4444',
+diffRed: '#FEF2F2',
+diffRedText: '#991B1B',
+diffGreen: '#F0FDF4',
+diffGreenText: '#166534',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+},
+boxShadow: {
+'soft': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+'floating': '0 -4px 6px -1px rgba(0, 0, 0, 0.05)',
+}
+}
+}
+}
+</script>
+<style>
+body { font-size: 16px; }
+.sidebar-scroll::-webkit-scrollbar { width: 4px; }
+.sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background-color: #E5E7EB; border-radius: 20px; }
+/* Diff Styles */
+.diff-del {
+background-color: #FEF2F2;
+color: #991B1B;
+text-decoration: line-through;
+padding: 2px 0;
+}
+.diff-add {
+background-color: #F0FDF4;
+color: #166534;
+padding: 2px 0;
+font-weight: 500;
+}
+</style></head>
+<body class="bg-bg font-sans text-dark antialiased min-h-screen flex selection:bg-primary/20 selection:text-primary">
+
+    <!-- ADMIN SIDEBAR (Fixed 200px) -->
+    <aside class="w-[200px] h-screen bg-surface border-r border-border flex flex-col fixed left-0 top-0 z-50 shadow-sm">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-5 border-b border-border/50">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-primary flex items-center justify-center text-white">
+                    <iconify-icon icon="lucide:layers" width="14" stroke-width="2.5"></iconify-icon>
+                </div>
+                <span class="font-semibold text-sm tracking-tight text-dark">CrowdBuilder</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto sidebar-scroll py-6 px-3 space-y-8">
+            <!-- Section: Overview -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Overview</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:layout-dashboard" width="18"></iconify-icon>
+                            Admin Home
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Content -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Content</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <!-- ACTIVE STATE (Parent of current view) -->
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md bg-primary/5 text-primary text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:list-todo" width="18"></iconify-icon>
+                            Pending Queue
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:star" width="18"></iconify-icon>
+                            Featured
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:pen-tool" width="18"></iconify-icon>
+                            CMS
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Users -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Users</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:users" width="18"></iconify-icon>
+                            Management
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Documents -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Documents</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:file-text" width="18"></iconify-icon>
+                            Doc Management
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-[200px] flex-1 min-h-screen bg-bg pb-28"> <!-- Added padding-bottom for fixed footer -->
+        
+        <div class="max-w-7xl mx-auto px-8 py-8">
+            
+            <!-- Back Link -->
+            <div class="mb-4">
+                <a href="#" class="inline-flex items-center text-secondary hover:text-primary text-sm font-medium transition-colors">
+                    <iconify-icon icon="lucide:arrow-left" width="16" class="mr-1"></iconify-icon>
+                    Back to Pending Queue
+                </a>
+            </div>
+
+            <!-- Header -->
+            <div class="flex items-start justify-between mb-8">
+                <div>
+                    <h2 class="text-[36px] font-semibold text-dark tracking-tight leading-tight mb-2">Edit Review</h2>
+                    <div class="flex items-center gap-3">
+                        <span class="text-[16px] text-secondary">
+                            For Project: <span class="font-medium text-dark">Smart AC Controller</span>
+                        </span>
+                        <span class="w-1 h-1 rounded-full bg-secondary/40"></span>
+                        <div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-gray-100 border border-gray-200">
+                            <iconify-icon icon="lucide:user" width="12" class="text-secondary"></iconify-icon>
+                            <span class="text-xs font-medium text-secondary">Submitted by David Ross</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-200">
+                        <iconify-icon icon="lucide:clock" width="12" class="mr-1.5"></iconify-icon>
+                        Awaiting Approval
+                    </span>
+                </div>
+            </div>
+
+            <!-- DIFF COMPARISON CONTAINER -->
+            <div class="bg-surface rounded-xl border border-border shadow-soft overflow-hidden">
+                
+                <!-- Diff Header -->
+                <div class="grid grid-cols-2 border-b border-border bg-gray-50/50">
+                    <div class="p-4 border-r border-border">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                            <h3 class="text-xs font-semibold text-secondary uppercase tracking-wider">Original Version</h3>
+                        </div>
+                        <span class="text-[10px] text-secondary pl-4">Last updated Jan 12, 2026</span>
+                    </div>
+                    <div class="p-4 bg-primary/5">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-primary"></div>
+                            <h3 class="text-xs font-semibold text-primary uppercase tracking-wider">Proposed Changes</h3>
+                        </div>
+                        <span class="text-[10px] text-secondary pl-4">Submitted today at 10:42 AM</span>
+                    </div>
+                </div>
+
+                <!-- Diff Content: Title -->
+                <div class="grid grid-cols-2 border-b border-border group hover:bg-gray-50/30 transition-colors">
+                    <div class="p-6 border-r border-border">
+                        <label class="block text-xs font-medium text-secondary mb-2 uppercase tracking-wide">Project Title</label>
+                        <div class="text-[24px] font-semibold text-dark tracking-tight">
+                            Smart <span class="diff-del">AC</span> Controller
+                        </div>
+                    </div>
+                    <div class="p-6 bg-primary/5 relative">
+                        <!-- Changed Indicator -->
+                        <div class="absolute top-6 right-6 text-primary" title="Field Modified">
+                            <iconify-icon icon="lucide:pencil" width="14"></iconify-icon>
+                        </div>
+                        <label class="block text-xs font-medium text-primary mb-2 uppercase tracking-wide">Project Title</label>
+                        <div class="text-[24px] font-semibold text-dark tracking-tight">
+                            Smart <span class="diff-add">Climate</span> Controller
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diff Content: Description -->
+                <div class="grid grid-cols-2 border-b border-border group hover:bg-gray-50/30 transition-colors">
+                    <div class="p-6 border-r border-border">
+                        <label class="block text-xs font-medium text-secondary mb-2 uppercase tracking-wide">Description</label>
+                        <p class="text-[16px] leading-relaxed text-secondary">
+                            Traditional air conditioning systems are <span class="diff-del">inefficient and often run when no one is home</span>. Our Smart AC Controller bridges the gap between old IR-controlled units and modern smart home ecosystems. It uses <span class="diff-del">standard Wi-Fi protocols</span> to predict usage patterns.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-primary/5 relative">
+                        <div class="absolute top-6 right-6 text-primary" title="Field Modified">
+                            <iconify-icon icon="lucide:pencil" width="14"></iconify-icon>
+                        </div>
+                        <label class="block text-xs font-medium text-primary mb-2 uppercase tracking-wide">Description</label>
+                        <p class="text-[16px] leading-relaxed text-dark">
+                            Traditional air conditioning systems are <span class="diff-add">energy vampires</span>. Our Smart AC Controller bridges the gap between old IR-controlled units and modern smart home ecosystems. It uses <span class="diff-add">Matter over Thread</span> to predict usage patterns.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Diff Content: SWOT Analysis -->
+                <div class="grid grid-cols-2 border-b border-border group hover:bg-gray-50/30 transition-colors">
+                    <div class="p-6 border-r border-border">
+                        <label class="block text-xs font-medium text-secondary mb-2 uppercase tracking-wide">SWOT Analysis (Strengths)</label>
+                        <ul class="list-disc pl-4 text-[16px] text-secondary space-y-1">
+                            <li>Local AI processing</li>
+                            <li><span class="diff-del">Low manufacturing cost</span></li>
+                            <li>Matter protocol support</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-primary/5 relative">
+                        <div class="absolute top-6 right-6 text-primary" title="Field Modified">
+                            <iconify-icon icon="lucide:pencil" width="14"></iconify-icon>
+                        </div>
+                        <label class="block text-xs font-medium text-primary mb-2 uppercase tracking-wide">SWOT Analysis (Strengths)</label>
+                        <ul class="list-disc pl-4 text-[16px] text-dark space-y-1">
+                            <li>Local AI processing</li>
+                            <li><span class="diff-add">Patented IR Blaster Technology</span></li>
+                            <li>Matter protocol support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Diff Content: Legal (No Changes) -->
+                <div class="grid grid-cols-2 group">
+                    <div class="p-6 border-r border-border bg-gray-50/30">
+                        <label class="block text-xs font-medium text-secondary mb-2 uppercase tracking-wide">Legal &amp; Compliance</label>
+                        <p class="text-[16px] text-secondary">Provisional Patent Filed (USPTO #63/123,456). GDPR Compliant.</p>
+                    </div>
+                    <div class="p-6 bg-gray-50/30 opacity-50 cursor-not-allowed">
+                        <label class="block text-xs font-medium text-secondary mb-2 uppercase tracking-wide">Legal &amp; Compliance</label>
+                        <p class="text-[16px] text-secondary">No changes proposed.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Spacing for Visual Balance -->
+            <div class="h-8"></div>
+        </div>
+    </main>
+
+    <!-- STICKY REVIEW PANEL (Bottom) -->
+    <div class="fixed bottom-0 left-[200px] right-0 bg-surface border-t border-border shadow-floating p-4 z-40">
+        <div class="max-w-7xl mx-auto px-4 flex items-start gap-8">
+            
+            <!-- Change Summary -->
+            <div class="w-1/4">
+                <h3 class="text-sm font-semibold text-dark mb-1 flex items-center gap-2">
+                    <iconify-icon icon="lucide:git-diff" width="16" class="text-primary"></iconify-icon>
+                    Change Summary
+                </h3>
+                <p class="text-xs text-secondary mb-2">3 fields modified by user.</p>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="px-2 py-0.5 rounded bg-gray-100 text-secondary text-[10px] font-medium border border-gray-200">Title</span>
+                    <span class="px-2 py-0.5 rounded bg-gray-100 text-secondary text-[10px] font-medium border border-gray-200">Description</span>
+                    <span class="px-2 py-0.5 rounded bg-gray-100 text-secondary text-[10px] font-medium border border-gray-200">SWOT</span>
+                </div>
+            </div>
+
+            <!-- Editor's Note -->
+            <div class="flex-1 border-l border-border pl-6">
+                <h3 class="text-sm font-semibold text-dark mb-1">Editor's Note</h3>
+                <div class="bg-blue-50/50 p-2.5 rounded border border-blue-100/50">
+                    <p class="text-xs text-secondary italic">
+                        "Updated the technical specs to match our new prototype results (Matter support) and refined the marketing copy to be more aggressive." — David Ross
+                    </p>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="w-1/3 flex flex-col items-end gap-3 pl-6 border-l border-border">
+                
+                <div class="flex items-center gap-3 w-full justify-end">
+                    <button class="flex-1 inline-flex justify-center items-center px-4 py-2 border border-danger text-sm font-medium rounded-lg text-danger bg-white hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-danger transition-all">
+                        <iconify-icon icon="lucide:x-circle" width="16" class="mr-2"></iconify-icon>
+                        Reject
+                    </button>
+                    
+                    <button class="flex-[2] inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-blue-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all">
+                        <iconify-icon icon="lucide:check-circle" width="16" class="mr-2"></iconify-icon>
+                        Approve Changes
+                    </button>
+                </div>
+
+                <!-- Conditional Feedback Input (Visual only) -->
+                <div class="w-full">
+                    <input type="text" placeholder="Reason for rejection (optional)..." class="w-full text-xs border-b border-gray-300 focus:border-danger focus:ring-0 px-0 py-1 bg-transparent placeholder-gray-400 outline-none transition-colors">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body></html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#F9FAFB]"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Ideas - CrowdBuilder</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+primaryHover: '#0052CC',
+secondary: '#6B7280',
+success: '#10B981',
+warning: '#F59E0B',
+error: '#EF4444',
+dark: '#111827',
+border: '#E5E7EB',
+surface: '#FFFFFF',
+bg: '#F9FAFB'
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+},
+boxShadow: {
+'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+'hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+}
+}
+}
+}
+</script>
+<style>
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style></head>
+<body class="text-[#111827] font-sans antialiased bg-bg min-h-screen flex selection:bg-primary/20 selection:text-primary">
+
+    <!-- SIDEBAR (Fixed 200px) -->
+    <aside class="fixed top-0 left-0 w-[200px] h-screen bg-surface border-r border-border z-40 flex flex-col hidden lg:flex">
+        <div class="h-16 flex items-center px-6 border-b border-border">
+            <div class="flex items-center gap-2 text-primary">
+                <iconify-icon icon="lucide:layers" width="24" stroke-width="1.5"></iconify-icon>
+                <span class="font-semibold tracking-tight text-[18px] text-dark">CrowdBuilder</span>
+            </div>
+        </div>
+
+        <nav class="flex-1 px-3 py-6 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-[8px] transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:layout-dashboard" width="18"></iconify-icon>
+                Feed
+            </a>
+            <!-- Active State -->
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-dark bg-gray-100 rounded-[8px] transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:compass" width="18" class="text-primary"></iconify-icon>
+                Discover
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-[8px] transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:trending-up" width="18"></iconify-icon>
+                Trending
+            </a>
+            <div class="pt-4 pb-2 px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Your Space</div>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-[8px] transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:briefcase" width="18"></iconify-icon>
+                My Portfolio
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-[8px] transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:bookmark" width="18"></iconify-icon>
+                Saved Items
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-[8px] transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:file-text" width="18"></iconify-icon>
+                My Documents
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-border">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300 overflow-hidden">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="User" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-semibold text-dark group-hover:text-primary transition-colors">Alex D.</span>
+                    <span class="text-[10px] text-secondary">Free Plan</span>
+                </div>
+            </a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 lg:ml-[200px] w-full min-h-screen flex flex-col">
+        
+        <!-- Mobile Header -->
+        <header class="lg:hidden h-16 bg-surface border-b border-border flex items-center justify-between px-4 sticky top-0 z-30">
+            <div class="flex items-center gap-2 text-primary">
+                <iconify-icon icon="lucide:layers" width="24"></iconify-icon>
+                <span class="font-semibold tracking-tight">CrowdBuilder</span>
+            </div>
+            <button class="text-secondary p-2">
+                <iconify-icon icon="lucide:menu" width="24"></iconify-icon>
+            </button>
+        </header>
+
+        <div class="flex-1 max-w-[1200px] mx-auto w-full px-4 md:px-8 py-10">
+            
+            <!-- PAGE HEADER -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <h2 class="text-[36px] font-semibold text-dark tracking-tight leading-tight">Browse Ideas</h2>
+                <div class="flex items-center bg-surface border border-border rounded-lg p-1 shadow-sm">
+                    <button class="p-1.5 text-dark bg-gray-100 rounded-md shadow-sm transition-all">
+                        <iconify-icon icon="lucide:layout-grid" width="18"></iconify-icon>
+                    </button>
+                    <button class="p-1.5 text-secondary hover:text-dark rounded-md transition-all ml-1">
+                        <iconify-icon icon="lucide:list" width="18"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+
+            <!-- FILTERS BAR -->
+            <div class="bg-surface border border-border rounded-[12px] p-4 mb-8 shadow-subtle flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
+                <!-- Search -->
+                <div class="relative w-full lg:w-[300px]">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <iconify-icon icon="lucide:search" class="text-gray-400" width="18"></iconify-icon>
+                    </div>
+                    <input type="text" placeholder="Search ideas..." class="block w-full pl-10 pr-3 py-2 border border-border rounded-[8px] leading-5 bg-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary text-sm text-dark transition duration-150 ease-in-out">
+                </div>
+
+                <!-- Dropdowns & Actions -->
+                <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+                    <!-- Category -->
+                    <div class="relative group">
+                        <button class="flex items-center justify-between w-[140px] px-3 py-2 text-sm text-left bg-white border border-border rounded-[8px] hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-primary text-dark">
+                            <span class="truncate">Category</span>
+                            <iconify-icon icon="lucide:chevron-down" class="text-gray-400" width="16"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="relative group">
+                        <button class="flex items-center justify-between w-[120px] px-3 py-2 text-sm text-left bg-white border border-border rounded-[8px] hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-primary text-dark">
+                            <span class="truncate">Any Status</span>
+                            <iconify-icon icon="lucide:chevron-down" class="text-gray-400" width="16"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <!-- Sort -->
+                    <div class="relative group ml-auto lg:ml-0">
+                        <button class="flex items-center gap-2 px-3 py-2 text-sm text-dark bg-white border border-border rounded-[8px] hover:bg-gray-50 focus:outline-none">
+                            <iconify-icon icon="lucide:arrow-up-down" class="text-secondary" width="14"></iconify-icon>
+                            <span>Newest</span>
+                        </button>
+                    </div>
+
+                    <!-- Clear Filters (Conditional) -->
+                    <button class="text-sm text-secondary hover:text-primary font-medium px-2 transition-colors">
+                        Clear
+                    </button>
+                </div>
+            </div>
+
+            <!-- NO RESULTS STATE (Hidden by default) -->
+            <div class="hidden flex flex-col items-center justify-center py-24 text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                    <iconify-icon icon="lucide:search-x" width="32" class="text-secondary"></iconify-icon>
+                </div>
+                <h3 class="text-[24px] font-semibold text-dark mb-2">No ideas found</h3>
+                <p class="text-[16px] text-secondary mb-8">Try adjusting your filters or search terms.</p>
+                <button class="px-4 py-2 bg-white border border-border rounded-[8px] text-sm font-medium text-dark hover:bg-gray-50 transition-colors shadow-subtle">
+                    Clear Filters
+                </button>
+            </div>
+
+            <!-- IDEA GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1 -->
+                <article class="bg-surface rounded-[12px] border border-border shadow-subtle hover:shadow-hover transition-shadow duration-300 flex flex-col h-full group cursor-pointer relative overflow-hidden">
+                    <div class="p-5 flex-1">
+                        <!-- Header -->
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Felix" class="w-10 h-10 rounded-full border border-gray-100 bg-gray-50">
+                                <div>
+                                    <h4 class="text-sm font-medium text-dark leading-none">Felix Chen</h4>
+                                    <span class="text-xs text-secondary mt-1 block">2 hours ago</span>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-semibold bg-success/10 text-success border border-success/20">
+                                Validating
+                            </span>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="mb-4">
+                            <h3 class="text-[20px] font-semibold text-dark tracking-tight mb-2 group-hover:text-primary transition-colors">EcoStream AI</h3>
+                            <p class="text-[16px] text-secondary line-clamp-2 leading-relaxed">
+                                An automated recycling sorting system using computer vision to identify and separate waste materials in real-time for office buildings.
+                            </p>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-secondary">CleanTech</span>
+                            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-secondary">AI/ML</span>
+                        </div>
+                    </div>
+
+                    <!-- Footer / Metrics -->
+                    <div class="px-5 py-4 border-t border-border flex items-center justify-between bg-gray-50/50">
+                        <button class="flex items-center gap-2 group/vote hover:bg-white hover:shadow-sm px-2 py-1 -ml-2 rounded-md transition-all">
+                            <iconify-icon icon="lucide:chevron-up" width="20" class="text-secondary group-hover/vote:text-primary"></iconify-icon>
+                            <span class="text-sm font-medium text-dark group-hover/vote:text-primary">342</span>
+                        </button>
+                        
+                        <div class="flex items-center gap-4">
+                            <button class="flex items-center gap-1.5 text-secondary hover:text-dark transition-colors">
+                                <iconify-icon icon="lucide:message-square" width="16"></iconify-icon>
+                                <span class="text-sm font-medium">28</span>
+                            </button>
+                            <button class="flex items-center text-secondary hover:text-primary transition-colors">
+                                <iconify-icon icon="lucide:bookmark" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="bg-surface rounded-[12px] border border-border shadow-subtle hover:shadow-hover transition-shadow duration-300 flex flex-col h-full group cursor-pointer">
+                    <div class="p-5 flex-1">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="Sarah" class="w-10 h-10 rounded-full border border-gray-100 bg-gray-50">
+                                <div>
+                                    <h4 class="text-sm font-medium text-dark leading-none">Sarah Miller</h4>
+                                    <span class="text-xs text-secondary mt-1 block">5 hours ago</span>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-semibold bg-primary/10 text-primary border border-primary/20">
+                                New
+                            </span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h3 class="text-[20px] font-semibold text-dark tracking-tight mb-2 group-hover:text-primary transition-colors">DevTools X</h3>
+                            <p class="text-[16px] text-secondary line-clamp-2 leading-relaxed">
+                                A unified dashboard for freelance developers to manage invoices, client tickets, and code deployments in one place.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-secondary">SaaS</span>
+                            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-secondary">Productivity</span>
+                        </div>
+                    </div>
+
+                    <div class="px-5 py-4 border-t border-border flex items-center justify-between bg-gray-50/50">
+                        <button class="flex items-center gap-2 group/vote hover:bg-white hover:shadow-sm px-2 py-1 -ml-2 rounded-md transition-all">
+                            <iconify-icon icon="lucide:chevron-up" width="20" class="text-secondary group-hover/vote:text-primary"></iconify-icon>
+                            <span class="text-sm font-medium text-dark group-hover/vote:text-primary">128</span>
+                        </button>
+                        
+                        <div class="flex items-center gap-4">
+                            <button class="flex items-center gap-1.5 text-secondary hover:text-dark transition-colors">
+                                <iconify-icon icon="lucide:message-square" width="16"></iconify-icon>
+                                <span class="text-sm font-medium">14</span>
+                            </button>
+                            <button class="flex items-center text-secondary hover:text-primary transition-colors">
+                                <iconify-icon icon="lucide:bookmark" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="bg-surface rounded-[12px] border border-border shadow-subtle hover:shadow-hover transition-shadow duration-300 flex flex-col h-full group cursor-pointer">
+                    <div class="p-5 flex-1">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="John" class="w-10 h-10 rounded-full border border-gray-100 bg-gray-50">
+                                <div>
+                                    <h4 class="text-sm font-medium text-dark leading-none">John Doe</h4>
+                                    <span class="text-xs text-secondary mt-1 block">1 day ago</span>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-semibold bg-warning/10 text-warning border border-warning/20">
+                                Seeking Co-founder
+                            </span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h3 class="text-[20px] font-semibold text-dark tracking-tight mb-2 group-hover:text-primary transition-colors">LocalMarket</h3>
+                            <p class="text-[16px] text-secondary line-clamp-2 leading-relaxed">
+                                Hyper-local marketplace connecting urban farmers directly with neighborhood restaurants to reduce food miles.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-secondary">Marketplace</span>
+                            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-secondary">Sustainability</span>
+                        </div>
+                    </div>
+
+                    <div class="px-5 py-4 border-t border-border flex items-center justify-between bg-gray-50/50">
+                        <button class="flex items-center gap-2 group/vote hover:bg-white hover:shadow-sm px-2 py-1 -ml-2 rounded-md transition-all">
+                            <iconify-icon icon="lucide:chevron-up" width="20" class="text-secondary group-hover/vote:text-primary"></iconify-icon>
+                            <span class="text-sm font-medium text-dark group-hover/vote:text-primary">89</span>
+                        </button>
+                        
+                        <div class="flex items-center gap-4">
+                            <button class="flex items-center gap-1.5 text-secondary hover:text-dark transition-colors">
+                                <iconify-icon icon="lucide:message-square" width="16"></iconify-icon>
+                                <span class="text-sm font-medium">42</span>
+                            </button>
+                            <button class="flex items-center text-secondary hover:text-primary transition-colors">
+                                <iconify-icon icon="lucide:bookmark" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="bg-surface rounded-[12px] border border-border shadow-subtle hover:shadow-hover transition-shadow duration-300 flex flex-col h-full group cursor-pointer">
+                    <div class="p-5 flex-1">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emily" alt="Emily" class="w-10 h-10 rounded-full border border-gray-100 bg-gray-50">
+                                <div>
+                                    <h4 class="text-sm font-medium text-dark leading-none">Emily Zhang</h4>
+                                    <span class="text-xs text-secondary mt-1 block">2 days ago</span>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-semibold bg-gray-100 text-secondary border border-gray-200">
+                                Draft
+                            </span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h3 class="text-[20px] font-semibold text-dark tracking-tight mb-2 group-hover:text-primary transition-colors">FitSync</h3>
+                            <p class="text-[16px] text-secondary line-clamp-2 leading-relaxed">
+                                Wearable agnostic health data aggregator that provides actionable insights using generative AI coaching.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-secondary">HealthTech</span>
+                            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-secondary">Consumer</span>
+                        </div>
+                    </div>
+
+                    <div class="px-5 py-4 border-t border-border flex items-center justify-between bg-gray-50/50">
+                        <button class="flex items-center gap-2 group/vote hover:bg-white hover:shadow-sm px-2 py-1 -ml-2 rounded-md transition-all">
+                            <iconify-icon icon="lucide:chevron-up" width="20" class="text-secondary group-hover/vote:text-primary"></iconify-icon>
+                            <span class="text-sm font-medium text-dark group-hover/vote:text-primary">56</span>
+                        </button>
+                        
+                        <div class="flex items-center gap-4">
+                            <button class="flex items-center gap-1.5 text-secondary hover:text-dark transition-colors">
+                                <iconify-icon icon="lucide:message-square" width="16"></iconify-icon>
+                                <span class="text-sm font-medium">8</span>
+                            </button>
+                            <button class="flex items-center text-secondary hover:text-primary transition-colors">
+                                <iconify-icon icon="lucide:bookmark" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="bg-surface rounded-[12px] border border-border shadow-subtle hover:shadow-hover transition-shadow duration-300 flex flex-col h-full group cursor-pointer">
+                    <div class="p-5 flex-1">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mike" alt="Mike" class="w-10 h-10 rounded-full border border-gray-100 bg-gray-50">
+                                <div>
+                                    <h4 class="text-sm font-medium text-dark leading-none">Mike Ross</h4>
+                                    <span class="text-xs text-secondary mt-1 block">3 days ago</span>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-semibold bg-success/10 text-success border border-success/20">
+                                Building
+                            </span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h3 class="text-[20px] font-semibold text-dark tracking-tight mb-2 group-hover:text-primary transition-colors">LegalEase</h3>
+                            <p class="text-[16px] text-secondary line-clamp-2 leading-relaxed">
+                                Simplifying contract creation for small businesses with pre-vetted templates and smart clauses.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-secondary">LegalTech</span>
+                            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-secondary">B2B</span>
+                        </div>
+                    </div>
+
+                    <div class="px-5 py-4 border-t border-border flex items-center justify-between bg-gray-50/50">
+                        <button class="flex items-center gap-2 group/vote hover:bg-white hover:shadow-sm px-2 py-1 -ml-2 rounded-md transition-all">
+                            <iconify-icon icon="lucide:chevron-up" width="20" class="text-secondary group-hover/vote:text-primary"></iconify-icon>
+                            <span class="text-sm font-medium text-dark group-hover/vote:text-primary">210</span>
+                        </button>
+                        
+                        <div class="flex items-center gap-4">
+                            <button class="flex items-center gap-1.5 text-secondary hover:text-dark transition-colors">
+                                <iconify-icon icon="lucide:message-square" width="16"></iconify-icon>
+                                <span class="text-sm font-medium">35</span>
+                            </button>
+                            <button class="flex items-center text-secondary hover:text-primary transition-colors">
+                                <iconify-icon icon="lucide:bookmark" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="bg-surface rounded-[12px] border border-border shadow-subtle hover:shadow-hover transition-shadow duration-300 flex flex-col h-full group cursor-pointer">
+                    <div class="p-5 flex-1">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ana" alt="Ana" class="w-10 h-10 rounded-full border border-gray-100 bg-gray-50">
+                                <div>
+                                    <h4 class="text-sm font-medium text-dark leading-none">Ana Silva</h4>
+                                    <span class="text-xs text-secondary mt-1 block">4 days ago</span>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-semibold bg-gray-100 text-secondary border border-gray-200">
+                                Concept
+                            </span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h3 class="text-[20px] font-semibold text-dark tracking-tight mb-2 group-hover:text-primary transition-colors">ArtisanConnect</h3>
+                            <p class="text-[16px] text-secondary line-clamp-2 leading-relaxed">
+                                A platform for traditional artisans to showcase their craft through high-quality video stories and sell directly.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-secondary">E-commerce</span>
+                            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-secondary">Creator</span>
+                        </div>
+                    </div>
+
+                    <div class="px-5 py-4 border-t border-border flex items-center justify-between bg-gray-50/50">
+                        <button class="flex items-center gap-2 group/vote hover:bg-white hover:shadow-sm px-2 py-1 -ml-2 rounded-md transition-all">
+                            <iconify-icon icon="lucide:chevron-up" width="20" class="text-secondary group-hover/vote:text-primary"></iconify-icon>
+                            <span class="text-sm font-medium text-dark group-hover/vote:text-primary">45</span>
+                        </button>
+                        
+                        <div class="flex items-center gap-4">
+                            <button class="flex items-center gap-1.5 text-secondary hover:text-dark transition-colors">
+                                <iconify-icon icon="lucide:message-square" width="16"></iconify-icon>
+                                <span class="text-sm font-medium">6</span>
+                            </button>
+                            <button class="flex items-center text-secondary hover:text-primary transition-colors">
+                                <iconify-icon icon="lucide:bookmark" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- PAGINATION -->
+            <div class="mt-10 flex items-center justify-between border-t border-border pt-6">
+                <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                    <div>
+                        <p class="text-sm text-secondary">
+                            Showing <span class="font-medium text-dark">1</span> to <span class="font-medium text-dark">6</span> of <span class="font-medium text-dark">42</span> ideas
+                        </p>
+                    </div>
+                    <div>
+                        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                            <button class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-border bg-white text-sm font-medium text-secondary hover:bg-gray-50">
+                                <span class="sr-only">Previous</span>
+                                <iconify-icon icon="lucide:chevron-left" width="16"></iconify-icon>
+                            </button>
+                            <button aria-current="page" class="relative inline-flex items-center px-4 py-2 border border-primary bg-blue-50 text-sm font-medium text-primary z-10">
+                                1
+                            </button>
+                            <button class="relative inline-flex items-center px-4 py-2 border border-border bg-white text-sm font-medium text-secondary hover:bg-gray-50">
+                                2
+                            </button>
+                            <button class="relative inline-flex items-center px-4 py-2 border border-border bg-white text-sm font-medium text-secondary hover:bg-gray-50">
+                                3
+                            </button>
+                            <span class="relative inline-flex items-center px-4 py-2 border border-border bg-white text-sm font-medium text-gray-400">
+                                ...
+                            </span>
+                            <button class="relative inline-flex items-center px-4 py-2 border border-border bg-white text-sm font-medium text-secondary hover:bg-gray-50">
+                                7
+                            </button>
+                            <button class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-border bg-white text-sm font-medium text-secondary hover:bg-gray-50">
+                                <span class="sr-only">Next</span>
+                                <iconify-icon icon="lucide:chevron-right" width="16"></iconify-icon>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+                <!-- Mobile Pagination -->
+                <div class="flex items-center justify-between w-full sm:hidden">
+                    <button class="relative inline-flex items-center px-4 py-2 border border-border text-sm font-medium rounded-md text-secondary bg-white hover:bg-gray-50">
+                        Previous
+                    </button>
+                    <button class="ml-3 relative inline-flex items-center px-4 py-2 border border-border text-sm font-medium rounded-md text-secondary bg-white hover:bg-gray-50">
+                        Next
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body></html>

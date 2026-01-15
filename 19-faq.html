@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frequently Asked Questions - CrowdBuilder</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+primaryHover: '#0052CC',
+secondary: '#6B7280',
+dark: '#111827',
+border: '#E5E7EB',
+surface: '#FFFFFF',
+bg: '#F9FAFB',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+}
+}
+}
+}
+</script>
+<style>
+.accordion-content {
+transition: grid-template-rows 0.3s ease-out;
+display: grid;
+grid-template-rows: 0fr;
+}
+.accordion-content > div {
+overflow: hidden;
+}
+.accordion-content.open {
+grid-template-rows: 1fr;
+}
+.accordion-icon {
+transition: transform 0.3s ease;
+}
+.accordion-btn[aria-expanded="true"] .accordion-icon {
+transform: rotate(180deg);
+}
+</style></head>
+<body class="text-[#111827] font-sans antialiased bg-surface min-h-screen flex flex-col selection:bg-primary/20 selection:text-primary">
+
+    <!-- HEADER -->
+    <header class="w-full border-b border-border bg-surface sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 text-primary group">
+                <iconify-icon icon="lucide:layers" width="24" stroke-width="1.5"></iconify-icon>
+                <span class="font-semibold tracking-tight text-lg text-dark group-hover:text-primary transition-colors">CrowdBuilder</span>
+            </a>
+            <nav>
+                <a href="#" class="text-sm font-medium text-secondary hover:text-dark transition-colors flex items-center gap-2">
+                    Home
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 w-full max-w-[800px] mx-auto px-6 py-12">
+        
+        <!-- Page Header -->
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-semibold tracking-tight text-dark mb-8">Frequently Asked Questions</h1>
+            
+            <!-- Search Input -->
+            <div class="relative max-w-md mx-auto">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary">
+                    <iconify-icon icon="lucide:search" width="20"></iconify-icon>
+                </div>
+                <input type="text" placeholder="Search for answers..." class="w-full pl-10 pr-4 py-3 bg-bg border border-border rounded-lg text-base text-dark placeholder:text-secondary focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm">
+            </div>
+        </div>
+
+        <!-- FAQ Categories -->
+        <div class="space-y-16">
+
+            <!-- Category: General -->
+            <section>
+                <h2 class="text-4xl font-semibold text-dark tracking-tight mb-6">General</h2>
+                <div class="border-t border-border">
+                    
+                    <!-- Item 1 -->
+                    <div class="border-b border-border">
+                        <button class="accordion-btn w-full flex items-center justify-between py-4 text-left group" aria-expanded="false">
+                            <h4 class="text-xl font-medium text-dark group-hover:text-primary transition-colors pr-8">What is CrowdBuilder?</h4>
+                            <span class="text-secondary group-hover:text-primary accordion-icon flex-shrink-0">
+                                <iconify-icon icon="lucide:chevron-down" width="24"></iconify-icon>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div>
+                                <div class="pb-4 text-base text-secondary leading-relaxed">
+                                    CrowdBuilder is a collaborative platform designed for entrepreneurs and innovators to share early-stage ideas, gather feedback, and build a community around their projects before launching.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="border-b border-border">
+                        <button class="accordion-btn w-full flex items-center justify-between py-4 text-left group" aria-expanded="false">
+                            <h4 class="text-xl font-medium text-dark group-hover:text-primary transition-colors pr-8">Who can use this platform?</h4>
+                            <span class="text-secondary group-hover:text-primary accordion-icon flex-shrink-0">
+                                <iconify-icon icon="lucide:chevron-down" width="24"></iconify-icon>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div>
+                                <div class="pb-4 text-base text-secondary leading-relaxed">
+                                    Our platform is open to anyone over the age of 18 who is interested in entrepreneurship. Whether you are a seasoned founder, a student with a new idea, or someone looking to support new ventures, you are welcome here.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="border-b border-border">
+                        <button class="accordion-btn w-full flex items-center justify-between py-4 text-left group" aria-expanded="false">
+                            <h4 class="text-xl font-medium text-dark group-hover:text-primary transition-colors pr-8">Is it free to use?</h4>
+                            <span class="text-secondary group-hover:text-primary accordion-icon flex-shrink-0">
+                                <iconify-icon icon="lucide:chevron-down" width="24"></iconify-icon>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div>
+                                <div class="pb-4 text-base text-secondary leading-relaxed">
+                                    Yes, creating an account and browsing ideas is completely free. We also offer a free tier for submitting projects. Advanced features for project analytics may require a premium subscription in the future.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Category: Account -->
+            <section>
+                <h2 class="text-4xl font-semibold text-dark tracking-tight mb-6">Account</h2>
+                <div class="border-t border-border">
+                    
+                    <!-- Item 1 -->
+                    <div class="border-b border-border">
+                        <button class="accordion-btn w-full flex items-center justify-between py-4 text-left group" aria-expanded="false">
+                            <h4 class="text-xl font-medium text-dark group-hover:text-primary transition-colors pr-8">How do I create an account?</h4>
+                            <span class="text-secondary group-hover:text-primary accordion-icon flex-shrink-0">
+                                <iconify-icon icon="lucide:chevron-down" width="24"></iconify-icon>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div>
+                                <div class="pb-4 text-base text-secondary leading-relaxed">
+                                    Click the "Sign Up" button in the top right corner of the homepage. You can register using your email address or connect quickly via Google or GitHub authentication.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="border-b border-border">
+                        <button class="accordion-btn w-full flex items-center justify-between py-4 text-left group" aria-expanded="false">
+                            <h4 class="text-xl font-medium text-dark group-hover:text-primary transition-colors pr-8">How do I reset my password?</h4>
+                            <span class="text-secondary group-hover:text-primary accordion-icon flex-shrink-0">
+                                <iconify-icon icon="lucide:chevron-down" width="24"></iconify-icon>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div>
+                                <div class="pb-4 text-base text-secondary leading-relaxed">
+                                    If you've forgotten your password, go to the login page and click "Forgot Password". Enter the email address associated with your account, and we will send you a secure link to create a new one.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="border-b border-border">
+                        <button class="accordion-btn w-full flex items-center justify-between py-4 text-left group" aria-expanded="false">
+                            <h4 class="text-xl font-medium text-dark group-hover:text-primary transition-colors pr-8">Can I delete my account?</h4>
+                            <span class="text-secondary group-hover:text-primary accordion-icon flex-shrink-0">
+                                <iconify-icon icon="lucide:chevron-down" width="24"></iconify-icon>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div>
+                                <div class="pb-4 text-base text-secondary leading-relaxed">
+                                    Yes. You can delete your account permanently from your Account Settings page. Please note that this action is irreversible and will remove all your posted projects and comments.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Category: Ideas -->
+            <section>
+                <h2 class="text-4xl font-semibold text-dark tracking-tight mb-6">Ideas</h2>
+                <div class="border-t border-border">
+                    
+                    <!-- Item 1 -->
+                    <div class="border-b border-border">
+                        <button class="accordion-btn w-full flex items-center justify-between py-4 text-left group" aria-expanded="false">
+                            <h4 class="text-xl font-medium text-dark group-hover:text-primary transition-colors pr-8">How do I submit an idea?</h4>
+                            <span class="text-secondary group-hover:text-primary accordion-icon flex-shrink-0">
+                                <iconify-icon icon="lucide:chevron-down" width="24"></iconify-icon>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div>
+                                <div class="pb-4 text-base text-secondary leading-relaxed">
+                                    Navigate to your dashboard and click "New Project." You will be guided through a simple form to describe your concept, target market, and current status.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="border-b border-border">
+                        <button class="accordion-btn w-full flex items-center justify-between py-4 text-left group" aria-expanded="false">
+                            <h4 class="text-xl font-medium text-dark group-hover:text-primary transition-colors pr-8">What happens after I submit?</h4>
+                            <span class="text-secondary group-hover:text-primary accordion-icon flex-shrink-0">
+                                <iconify-icon icon="lucide:chevron-down" width="24"></iconify-icon>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div>
+                                <div class="pb-4 text-base text-secondary leading-relaxed">
+                                    Once submitted, your idea goes into the "Fresh" feed. Other users can view, comment, and vote on your idea. You will receive notifications when the community interacts with your post.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="border-b border-border">
+                        <button class="accordion-btn w-full flex items-center justify-between py-4 text-left group" aria-expanded="false">
+                            <h4 class="text-xl font-medium text-dark group-hover:text-primary transition-colors pr-8">Can I edit my idea?</h4>
+                            <span class="text-secondary group-hover:text-primary accordion-icon flex-shrink-0">
+                                <iconify-icon icon="lucide:chevron-down" width="24"></iconify-icon>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div>
+                                <div class="pb-4 text-base text-secondary leading-relaxed">
+                                    Yes, you can edit your project details at any time. However, if you make significant changes to the core concept, we recommend posting a "Pivot Update" in the comments to keep your followers informed.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Category: Voting -->
+            <section>
+                <h2 class="text-4xl font-semibold text-dark tracking-tight mb-6">Voting</h2>
+                <div class="border-t border-border">
+                    
+                    <!-- Item 1 -->
+                    <div class="border-b border-border">
+                        <button class="accordion-btn w-full flex items-center justify-between py-4 text-left group" aria-expanded="false">
+                            <h4 class="text-xl font-medium text-dark group-hover:text-primary transition-colors pr-8">How does voting work?</h4>
+                            <span class="text-secondary group-hover:text-primary accordion-icon flex-shrink-0">
+                                <iconify-icon icon="lucide:chevron-down" width="24"></iconify-icon>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div>
+                                <div class="pb-4 text-base text-secondary leading-relaxed">
+                                    Voting helps surface the most promising ideas. Users get a set number of votes per week to distribute among projects they believe in.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="border-b border-border">
+                        <button class="accordion-btn w-full flex items-center justify-between py-4 text-left group" aria-expanded="false">
+                            <h4 class="text-xl font-medium text-dark group-hover:text-primary transition-colors pr-8">What are the voting rules?</h4>
+                            <span class="text-secondary group-hover:text-primary accordion-icon flex-shrink-0">
+                                <iconify-icon icon="lucide:chevron-down" width="24"></iconify-icon>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div>
+                                <div class="pb-4 text-base text-secondary leading-relaxed">
+                                    You cannot vote for your own projects. Vote manipulation (creating multiple accounts to upvote) is strictly prohibited and will result in an immediate ban.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Contact Section -->
+        <div class="mt-20 pt-10 border-t border-border text-center">
+            <h3 class="text-2xl font-semibold text-dark mb-2">Still have questions?</h3>
+            <p class="text-secondary mb-4">We're here to help.</p>
+            <a href="mailto:support@crowdbuilder.com" class="inline-flex items-center gap-2 text-primary font-medium hover:text-primaryHover transition-colors">
+                <iconify-icon icon="lucide:mail" width="18"></iconify-icon>
+                support@crowdbuilder.com
+            </a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-bg border-t border-border py-12 mt-auto">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2 text-secondary">
+                <iconify-icon icon="lucide:layers" width="20"></iconify-icon>
+                <span class="text-sm">© 2023 CrowdBuilder Inc. All rights reserved.</span>
+            </div>
+            <div class="flex items-center gap-8">
+                <a href="#" class="text-sm text-secondary hover:text-dark transition-colors">Terms of Service</a>
+                <a href="#" class="text-sm text-secondary hover:text-dark transition-colors">Privacy Policy</a>
+                <a href="#" class="text-sm text-secondary hover:text-dark transition-colors">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ACCORDION LOGIC -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordions = document.querySelectorAll('.accordion-btn');
+
+            accordions.forEach(acc => {
+                acc.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                    // Close all other accordions
+                    accordions.forEach(otherAcc => {
+                        if (otherAcc !== this) {
+                            otherAcc.setAttribute('aria-expanded', 'false');
+                            otherAcc.nextElementSibling.classList.remove('open');
+                        }
+                    });
+
+                    // Toggle current accordion
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    content.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+
+</body></html>

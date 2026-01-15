@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-gray-50"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Documents - CrowdBuilder</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+secondary: '#6B7280',
+success: '#10B981',
+warning: '#F59E0B',
+error: '#EF4444',
+dark: '#111827',
+border: '#E5E7EB',
+surface: '#FFFFFF',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+},
+spacing: {
+'card': '20px',
+'section': '32px',
+},
+borderRadius: {
+'card': '12px',
+'btn': '8px',
+},
+boxShadow: {
+'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+'hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+}
+}
+}
+}
+</script>
+<style>
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style></head>
+<body class="text-[#111827] font-sans antialiased selection:bg-primary/20 selection:text-primary min-h-screen flex">
+
+    <!-- SIDEBAR (Fixed 200px) -->
+    <aside class="fixed top-0 left-0 w-[200px] h-screen bg-surface border-r border-border z-40 flex flex-col hidden lg:flex">
+        <div class="h-16 flex items-center px-6 border-b border-border">
+            <div class="flex items-center gap-2 text-primary">
+                <iconify-icon icon="lucide:layers" width="24" stroke-width="1.5"></iconify-icon>
+                <span class="font-semibold tracking-tight text-lg text-dark">CrowdBuilder</span>
+            </div>
+        </div>
+
+        <nav class="flex-1 px-3 py-6 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-btn transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:layout-dashboard" width="18"></iconify-icon>
+                Feed
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-btn transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:compass" width="18"></iconify-icon>
+                Discover
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-btn transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:trending-up" width="18"></iconify-icon>
+                Trending
+            </a>
+            <div class="pt-4 pb-2 px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Your Space</div>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-btn transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:briefcase" width="18"></iconify-icon>
+                My Portfolio
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-btn transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:bookmark" width="18"></iconify-icon>
+                Saved Items
+            </a>
+            <!-- Active State -->
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-dark bg-gray-50 rounded-btn transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:file-text" width="18" class="text-primary"></iconify-icon>
+                My Documents
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-border">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300"></div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-semibold text-dark">Alex D.</span>
+                    <span class="text-[10px] text-secondary">Free Plan</span>
+                </div>
+            </a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="flex-1 lg:ml-[200px] w-full min-h-screen pb-12">
+        
+        <!-- Mobile Header -->
+        <header class="lg:hidden h-16 bg-surface border-b border-border flex items-center justify-between px-4 sticky top-0 z-30">
+            <div class="flex items-center gap-2 text-primary">
+                <iconify-icon icon="lucide:layers" width="24"></iconify-icon>
+                <span class="font-semibold tracking-tight">CrowdBuilder</span>
+            </div>
+            <button class="text-gray-500">
+                <iconify-icon icon="lucide:menu" width="24"></iconify-icon>
+            </button>
+        </header>
+
+        <div class="max-w-[1200px] mx-auto px-4 md:px-8 py-10">
+            
+            <!-- PAGE HEADER -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h2 class="text-4xl font-semibold text-dark tracking-tight">My Documents</h2>
+                </div>
+                <button class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-medium rounded-btn hover:bg-blue-700 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                    <iconify-icon icon="lucide:plus" width="16"></iconify-icon>
+                    Request Document
+                </button>
+            </div>
+
+            <!-- STATUS TABS -->
+            <div class="flex items-center border-b border-border mb-6 overflow-x-auto hide-scrollbar">
+                <button class="flex items-center gap-2 px-1 py-3 mr-6 text-sm font-medium text-primary border-b-2 border-primary transition-colors whitespace-nowrap">
+                    All Documents
+                    <span class="px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 text-xs">8</span>
+                </button>
+                <button class="flex items-center gap-2 px-1 py-3 mr-6 text-sm font-medium text-secondary hover:text-dark border-b-2 border-transparent hover:border-gray-200 transition-colors whitespace-nowrap">
+                    Pending
+                    <span class="px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 text-xs">2</span>
+                </button>
+                <button class="flex items-center gap-2 px-1 py-3 mr-6 text-sm font-medium text-secondary hover:text-dark border-b-2 border-transparent hover:border-gray-200 transition-colors whitespace-nowrap">
+                    Completed
+                    <span class="px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 text-xs">6</span>
+                </button>
+            </div>
+
+            <!-- DOCUMENTS TABLE -->
+            <div class="bg-surface rounded-card border border-border shadow-subtle overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-border bg-gray-50/50">
+                                <th class="px-6 py-3 text-xs font-medium text-secondary uppercase tracking-wider w-[30%]">Document Type</th>
+                                <th class="px-6 py-3 text-xs font-medium text-secondary uppercase tracking-wider w-[25%]">Related Idea</th>
+                                <th class="px-6 py-3 text-xs font-medium text-secondary uppercase tracking-wider w-[15%]">Status</th>
+                                <th class="px-6 py-3 text-xs font-medium text-secondary uppercase tracking-wider w-[15%]">Date</th>
+                                <th class="px-6 py-3 text-xs font-medium text-secondary uppercase tracking-wider text-right w-[15%]">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-border">
+                            
+                            <!-- Row 1 -->
+                            <tr class="group hover:bg-gray-50/50 transition-colors h-16">
+                                <td class="px-6 py-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex-shrink-0 w-8 h-8 rounded bg-blue-50 text-blue-600 flex items-center justify-center">
+                                            <iconify-icon icon="lucide:file-check" width="16"></iconify-icon>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium text-dark">Non-Disclosure Agreement</span>
+                                            <span class="text-xs text-secondary">PDF • 2.4 MB</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <a href="#" class="text-sm font-medium text-primary hover:underline hover:text-blue-700">EcoStream AI</a>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20">
+                                        Completed
+                                    </span>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <span class="text-sm text-secondary">Oct 24, 2023</span>
+                                </td>
+                                <td class="px-6 py-3 text-right">
+                                    <div class="flex items-center justify-end gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+                                        <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-100 rounded-md transition-colors" title="Download">
+                                            <iconify-icon icon="lucide:download" width="16"></iconify-icon>
+                                        </button>
+                                        <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-100 rounded-md transition-colors" title="View Details">
+                                            <iconify-icon icon="lucide:eye" width="16"></iconify-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2 -->
+                            <tr class="group hover:bg-gray-50/50 transition-colors h-16">
+                                <td class="px-6 py-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex-shrink-0 w-8 h-8 rounded bg-orange-50 text-orange-600 flex items-center justify-center">
+                                            <iconify-icon icon="lucide:building-2" width="16"></iconify-icon>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium text-dark">Incorporation Certificate</span>
+                                            <span class="text-xs text-secondary">Processing</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <a href="#" class="text-sm font-medium text-primary hover:underline hover:text-blue-700">FinTrack Pro</a>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning/10 text-warning border border-warning/20">
+                                        Pending
+                                    </span>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <span class="text-sm text-secondary">Oct 22, 2023</span>
+                                </td>
+                                <td class="px-6 py-3 text-right">
+                                    <div class="flex items-center justify-end gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+                                        <button class="p-1.5 text-secondary cursor-not-allowed opacity-50" title="Download" disabled="">
+                                            <iconify-icon icon="lucide:download" width="16"></iconify-icon>
+                                        </button>
+                                        <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-100 rounded-md transition-colors" title="View Details">
+                                            <iconify-icon icon="lucide:eye" width="16"></iconify-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 3 -->
+                            <tr class="group hover:bg-gray-50/50 transition-colors h-16">
+                                <td class="px-6 py-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex-shrink-0 w-8 h-8 rounded bg-gray-100 text-gray-500 flex items-center justify-center">
+                                            <iconify-icon icon="lucide:file-text" width="16"></iconify-icon>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium text-dark">Investment Term Sheet</span>
+                                            <span class="text-xs text-secondary">Draft</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <a href="#" class="text-sm font-medium text-primary hover:underline hover:text-blue-700">HealthSync</a>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200">
+                                        Draft
+                                    </span>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <span class="text-sm text-secondary">Oct 20, 2023</span>
+                                </td>
+                                <td class="px-6 py-3 text-right">
+                                    <div class="flex items-center justify-end gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+                                        <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-100 rounded-md transition-colors" title="Edit">
+                                            <iconify-icon icon="lucide:pencil" width="16"></iconify-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 4 -->
+                            <tr class="group hover:bg-gray-50/50 transition-colors h-16">
+                                <td class="px-6 py-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex-shrink-0 w-8 h-8 rounded bg-red-50 text-red-600 flex items-center justify-center">
+                                            <iconify-icon icon="lucide:alert-circle" width="16"></iconify-icon>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium text-dark">Trademark Application</span>
+                                            <span class="text-xs text-secondary">Action Required</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <a href="#" class="text-sm font-medium text-primary hover:underline hover:text-blue-700">DevTools X</a>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-error/10 text-error border border-error/20">
+                                        Rejected
+                                    </span>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <span class="text-sm text-secondary">Oct 18, 2023</span>
+                                </td>
+                                <td class="px-6 py-3 text-right">
+                                    <div class="flex items-center justify-end gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+                                        <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-100 rounded-md transition-colors" title="View Details">
+                                            <iconify-icon icon="lucide:eye" width="16"></iconify-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                             <!-- Row 5 -->
+                             <tr class="group hover:bg-gray-50/50 transition-colors h-16">
+                                <td class="px-6 py-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex-shrink-0 w-8 h-8 rounded bg-blue-50 text-blue-600 flex items-center justify-center">
+                                            <iconify-icon icon="lucide:file-check" width="16"></iconify-icon>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium text-dark">Co-Founder Agreement</span>
+                                            <span class="text-xs text-secondary">PDF • 1.1 MB</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <a href="#" class="text-sm font-medium text-primary hover:underline hover:text-blue-700">EcoStream AI</a>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20">
+                                        Completed
+                                    </span>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <span class="text-sm text-secondary">Sep 28, 2023</span>
+                                </td>
+                                <td class="px-6 py-3 text-right">
+                                    <div class="flex items-center justify-end gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+                                        <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-100 rounded-md transition-colors" title="Download">
+                                            <iconify-icon icon="lucide:download" width="16"></iconify-icon>
+                                        </button>
+                                        <button class="p-1.5 text-secondary hover:text-dark hover:bg-gray-100 rounded-md transition-colors" title="View Details">
+                                            <iconify-icon icon="lucide:eye" width="16"></iconify-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- EMPTY STATE (Example Code - Hidden for now as list is populated) -->
+            <div class="hidden mt-10 flex flex-col items-center justify-center py-20 text-center border-2 border-dashed border-border rounded-card bg-surface/50">
+                <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-6">
+                    <iconify-icon icon="lucide:file" width="32" class="text-gray-400"></iconify-icon>
+                </div>
+                <h3 class="text-2xl font-semibold text-dark mb-2">No documents</h3>
+                <p class="text-base text-secondary mb-8 max-w-sm">
+                    Request documents for your ideas to get started with legal and administrative tasks.
+                </p>
+                <button class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-btn shadow-sm text-white bg-primary hover:bg-blue-700 transition-colors">
+                    Request Document
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+</body></html>

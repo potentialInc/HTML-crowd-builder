@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works - Crowd Builder</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+secondary: '#6B7280',
+dark: '#111827',
+border: '#E5E7EB',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+}
+}
+}
+}
+</script></head>
+<body class="bg-white text-[#111827] font-sans antialiased selection:bg-[#0066FF]/20 selection:text-[#0066FF]">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="bg-[#0066FF] text-white p-1.5 rounded-lg group-hover:bg-blue-700 transition-colors">
+                    <iconify-icon icon="lucide:layers" width="20" stroke-width="1.5"></iconify-icon>
+                </div>
+                <span class="text-base font-semibold tracking-tight text-gray-900">CrowdBuilder</span>
+            </a>
+
+            <!-- Nav Links (Desktop) -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Browse Ideas</a>
+                <a href="#" class="text-sm font-medium text-gray-900">How It Works</a>
+                <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Categories</a>
+            </nav>
+
+            <!-- Auth Buttons -->
+            <div class="flex items-center gap-3">
+                <a href="#" class="hidden sm:inline-flex text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-2 transition-colors">Log in</a>
+                <a href="#" class="inline-flex items-center justify-center h-9 px-4 text-sm font-medium text-white bg-[#0066FF] hover:bg-blue-700 rounded-lg shadow-sm transition-all active:scale-95">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        
+        <!-- HERO SECTION -->
+        <section class="py-20 sm:py-24 px-6 text-center max-w-4xl mx-auto">
+            <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight text-gray-900 mb-6">
+                How Crowd Builder Works
+            </h1>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                From idea to funded project in three simple steps. We connect visionaries with the community support they need to launch.
+            </p>
+        </section>
+
+        <!-- THREE-STEP PROCESS -->
+        <section class="px-6 pb-24 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Step 1 -->
+                <div class="p-6 rounded-2xl border border-gray-100 bg-white hover:border-gray-200 hover:shadow-sm transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-[#0066FF]/10 text-[#0066FF] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="lucide:lightbulb" width="24" stroke-width="1.5"></iconify-icon>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3 tracking-tight">Share Your Idea</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        Create a detailed proposal with your business concept, target market, and funding goals. Our editor makes it simple.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="p-6 rounded-2xl border border-gray-100 bg-white hover:border-gray-200 hover:shadow-sm transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-[#0066FF]/10 text-[#0066FF] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="lucide:users" width="24" stroke-width="1.5"></iconify-icon>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3 tracking-tight">Gather Community Feedback</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        Get valuable insights from potential customers and fellow entrepreneurs. Refine your pitch before you launch.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="p-6 rounded-2xl border border-gray-100 bg-white hover:border-gray-200 hover:shadow-sm transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-[#0066FF]/10 text-[#0066FF] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="lucide:wallet" width="24" stroke-width="1.5"></iconify-icon>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3 tracking-tight">Get Funded</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        Launch your funding campaign and turn your validated concept into reality with direct support from backers.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- DETAILED SECTION: FOR IDEA CREATORS -->
+        <section class="py-20 border-t border-gray-100 bg-gray-50/50">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    <div class="flex-1 order-2 lg:order-1">
+                        <div class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm relative overflow-hidden">
+                            <!-- Abstract UI Representation -->
+                            <div class="space-y-4 opacity-50 select-none pointer-events-none">
+                                <div class="h-4 w-1/3 bg-gray-100 rounded"></div>
+                                <div class="h-8 w-3/4 bg-gray-100 rounded"></div>
+                                <div class="grid grid-cols-2 gap-4 mt-8">
+                                    <div class="h-24 bg-blue-50/50 rounded-lg border border-blue-100"></div>
+                                    <div class="h-24 bg-gray-50 rounded-lg border border-gray-100"></div>
+                                </div>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-100 flex items-center gap-3">
+                                    <div class="text-[#0066FF] bg-blue-50 p-2 rounded-lg">
+                                        <iconify-icon icon="lucide:rocket" width="24"></iconify-icon>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-semibold text-gray-900">Project Launched</div>
+                                        <div class="text-xs text-gray-500">Just now</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 order-1 lg:order-2">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#0066FF] text-xs font-medium mb-6">
+                            Creators
+                        </div>
+                        <h2 class="text-3xl font-semibold tracking-tight text-gray-900 mb-6">For Idea Creators</h2>
+                        <p class="text-gray-500 mb-8 leading-relaxed">
+                            Stop keeping your best ideas in a notebook. Crowd Builder gives you the platform to test, refine, and fund your next big venture.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle-2" class="text-[#0066FF] mt-0.5 shrink-0" width="20"></iconify-icon>
+                                <span class="text-sm text-gray-600">Submit unlimited ideas for community review</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle-2" class="text-[#0066FF] mt-0.5 shrink-0" width="20"></iconify-icon>
+                                <span class="text-sm text-gray-600">Get instant validation from real users</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle-2" class="text-[#0066FF] mt-0.5 shrink-0" width="20"></iconify-icon>
+                                <span class="text-sm text-gray-600">Access funding opportunities directly</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle-2" class="text-[#0066FF] mt-0.5 shrink-0" width="20"></iconify-icon>
+                                <span class="text-sm text-gray-600">Connect with potential co-founders</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DETAILED SECTION: FOR SUPPORTERS -->
+        <section class="py-20 border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    <div class="flex-1">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-emerald-600 text-xs font-medium mb-6">
+                            Supporters
+                        </div>
+                        <h2 class="text-3xl font-semibold tracking-tight text-gray-900 mb-6">For Supporters</h2>
+                        <p class="text-gray-500 mb-8 leading-relaxed">
+                            Be the first to discover and shape the products of tomorrow. Your feedback and support can launch the next unicorn.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle-2" class="text-emerald-500 mt-0.5 shrink-0" width="20"></iconify-icon>
+                                <span class="text-sm text-gray-600">Discover innovative projects before anyone else</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle-2" class="text-emerald-500 mt-0.5 shrink-0" width="20"></iconify-icon>
+                                <span class="text-sm text-gray-600">Provide valuable feedback to shape products</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle-2" class="text-emerald-500 mt-0.5 shrink-0" width="20"></iconify-icon>
+                                <span class="text-sm text-gray-600">Get early access and exclusive perks</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle-2" class="text-emerald-500 mt-0.5 shrink-0" width="20"></iconify-icon>
+                                <span class="text-sm text-gray-600">Support entrepreneurs in their journey</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex-1">
+                        <div class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm relative overflow-hidden">
+                            <!-- Abstract UI Representation -->
+                            <div class="space-y-4 select-none pointer-events-none">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="h-10 w-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
+                                        <iconify-icon icon="lucide:message-circle" width="20"></iconify-icon>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="h-2 w-24 bg-gray-100 rounded"></div>
+                                        <div class="h-2 w-32 bg-gray-100 rounded"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                                    <div class="flex gap-2 mb-2">
+                                        <iconify-icon icon="lucide:star" class="text-yellow-400" width="14"></iconify-icon>
+                                        <iconify-icon icon="lucide:star" class="text-yellow-400" width="14"></iconify-icon>
+                                        <iconify-icon icon="lucide:star" class="text-yellow-400" width="14"></iconify-icon>
+                                        <iconify-icon icon="lucide:star" class="text-yellow-400" width="14"></iconify-icon>
+                                        <iconify-icon icon="lucide:star" class="text-yellow-400" width="14"></iconify-icon>
+                                    </div>
+                                    <div class="h-2 w-full bg-gray-200 rounded mb-2"></div>
+                                    <div class="h-2 w-2/3 bg-gray-200 rounded"></div>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 opacity-50">
+                                    <div class="h-2 w-full bg-gray-200 rounded mb-2"></div>
+                                    <div class="h-2 w-1/2 bg-gray-200 rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="py-24 px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-semibold tracking-tight text-gray-900 mb-4">Ready to share your idea?</h2>
+                <p class="text-gray-500 mb-8">Join thousands of creators and backers building the future together.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button class="h-12 px-8 bg-[#0066FF] hover:bg-blue-700 text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95 w-full sm:w-auto flex items-center justify-center gap-2">
+                        Get Started
+                        <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
+                    </button>
+                    <button class="h-12 px-8 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-medium rounded-lg shadow-sm transition-all active:scale-95 w-full sm:w-auto">
+                        View Projects
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-gray-100 py-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            <div class="col-span-2 md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="bg-gray-900 text-white p-1 rounded-md">
+                        <iconify-icon icon="lucide:layers" width="16" stroke-width="1.5"></iconify-icon>
+                    </div>
+                    <span class="text-sm font-semibold text-gray-900">CrowdBuilder</span>
+                </div>
+                <p class="text-sm text-gray-500">Helping ideas take flight through community validation and funding.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-medium text-gray-900 text-sm mb-4">Product</h4>
+                <ul class="space-y-3 text-sm text-gray-500">
+                    <li><a href="#" class="hover:text-[#0066FF] transition-colors">Browse Ideas</a></li>
+                    <li><a href="#" class="hover:text-[#0066FF] transition-colors">How It Works</a></li>
+                    <li><a href="#" class="hover:text-[#0066FF] transition-colors">Pricing</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-medium text-gray-900 text-sm mb-4">Company</h4>
+                <ul class="space-y-3 text-sm text-gray-500">
+                    <li><a href="#" class="hover:text-[#0066FF] transition-colors">About</a></li>
+                    <li><a href="#" class="hover:text-[#0066FF] transition-colors">Blog</a></li>
+                    <li><a href="#" class="hover:text-[#0066FF] transition-colors">Careers</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-medium text-gray-900 text-sm mb-4">Legal</h4>
+                <ul class="space-y-3 text-sm text-gray-500">
+                    <li><a href="#" class="hover:text-[#0066FF] transition-colors">Privacy</a></li>
+                    <li><a href="#" class="hover:text-[#0066FF] transition-colors">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-gray-100 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-gray-400">© 2023 Crowd Builder Inc. All rights reserved.</p>
+            <div class="flex gap-4 text-gray-400">
+                <a href="#" class="hover:text-gray-600 transition-colors"><iconify-icon icon="lucide:twitter" width="18"></iconify-icon></a>
+                <a href="#" class="hover:text-gray-600 transition-colors"><iconify-icon icon="lucide:github" width="18"></iconify-icon></a>
+                <a href="#" class="hover:text-gray-600 transition-colors"><iconify-icon icon="lucide:linkedin" width="18"></iconify-icon></a>
+            </div>
+        </div>
+    </footer>
+
+
+</body></html>

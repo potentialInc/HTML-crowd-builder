@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reports - CrowdBuilder Admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+primaryLight: '#E5F0FF',
+primaryHover: '#0052CC',
+secondary: '#6B7280',
+dark: '#111827',
+border: '#E5E7EB',
+surface: '#FFFFFF',
+bg: '#F9FAFB',
+success: '#10B981',
+warning: '#F59E0B',
+danger: '#EF4444',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+},
+boxShadow: {
+'soft': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+'modal': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+}
+}
+}
+}
+</script>
+<style>
+body { font-size: 16px; }
+.sidebar-scroll::-webkit-scrollbar { width: 4px; }
+.sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background-color: #E5E7EB; border-radius: 20px; }
+/* Hide scrollbar for body when modal is open */
+body.modal-open { overflow: hidden; }
+</style></head>
+<body class="bg-bg font-sans text-dark antialiased min-h-screen flex selection:bg-primary/20 selection:text-primary modal-open">
+
+    <!-- ADMIN SIDEBAR (Fixed 200px) -->
+    <aside class="w-[200px] h-screen bg-surface border-r border-border flex flex-col fixed left-0 top-0 z-40 shadow-sm">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-5 border-b border-border/50">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-primary flex items-center justify-center text-white">
+                    <iconify-icon icon="lucide:layers" width="14" stroke-width="2.5"></iconify-icon>
+                </div>
+                <span class="font-semibold text-sm tracking-tight text-dark">CrowdBuilder</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto sidebar-scroll py-6 px-3 space-y-8">
+            <!-- Section: Overview -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Overview</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:layout-dashboard" width="18"></iconify-icon>
+                            Admin Home
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Content -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Content</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:list-todo" width="18"></iconify-icon>
+                            Pending Queue
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:star" width="18"></iconify-icon>
+                            Featured
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:pen-tool" width="18"></iconify-icon>
+                            CMS
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Users -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Users</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:users" width="18"></iconify-icon>
+                            Management
+                        </a>
+                    </li>
+                    <li>
+                        <!-- ACTIVE STATE -->
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md bg-primary/5 text-primary text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:flag" width="18"></iconify-icon>
+                            Reports
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Documents -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Documents</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:file-text" width="18"></iconify-icon>
+                            Doc Management
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-[200px] flex-1 min-h-screen bg-bg relative">
+        <div class="max-w-7xl mx-auto px-8 py-10">
+            
+            <!-- Page Header -->
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-[36px] font-semibold text-dark tracking-tight leading-tight">Reports</h2>
+                <span class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-sm font-semibold bg-red-100 text-red-600">
+                    8 Unresolved
+                </span>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-4 mb-8">
+                <!-- Card 1: Total -->
+                <div class="bg-surface rounded-xl border border-border shadow-soft p-5">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-secondary truncate">Total Reports</p>
+                            <p class="mt-1 text-2xl font-semibold text-dark tracking-tight">156</p>
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded-lg text-secondary">
+                            <iconify-icon icon="lucide:inbox" width="20"></iconify-icon>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-xs text-secondary">All time</div>
+                </div>
+
+                <!-- Card 2: Unresolved -->
+                <div class="bg-surface rounded-xl border border-border shadow-soft p-5 ring-1 ring-red-500/10">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-secondary truncate">Unresolved</p>
+                            <p class="mt-1 text-2xl font-semibold text-dark tracking-tight">8</p>
+                        </div>
+                        <div class="p-2 bg-red-50 rounded-lg text-red-600">
+                            <iconify-icon icon="lucide:alert-circle" width="20"></iconify-icon>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-xs text-red-600 font-medium">Needs attention</div>
+                </div>
+
+                <!-- Card 3: Resolved -->
+                <div class="bg-surface rounded-xl border border-border shadow-soft p-5">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-secondary truncate">Resolved</p>
+                            <p class="mt-1 text-2xl font-semibold text-dark tracking-tight">142</p>
+                        </div>
+                        <div class="p-2 bg-emerald-50 rounded-lg text-emerald-600">
+                            <iconify-icon icon="lucide:check-circle-2" width="20"></iconify-icon>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-xs text-secondary">This month</div>
+                </div>
+
+                <!-- Card 4: Dismissed -->
+                <div class="bg-surface rounded-xl border border-border shadow-soft p-5">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-secondary truncate">Dismissed</p>
+                            <p class="mt-1 text-2xl font-semibold text-dark tracking-tight">6</p>
+                        </div>
+                        <div class="p-2 bg-gray-100 rounded-lg text-secondary">
+                            <iconify-icon icon="lucide:ban" width="20"></iconify-icon>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-xs text-secondary">No action needed</div>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="bg-surface border border-border rounded-xl shadow-soft overflow-hidden">
+                
+                <!-- Filters / Tabs -->
+                <div class="border-b border-border px-6">
+                    <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                        <a href="#" class="border-primary text-primary whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                            All Reports
+                        </a>
+                        <a href="#" class="border-transparent text-secondary hover:text-dark hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2">
+                            Ideas
+                            <span class="bg-gray-100 text-gray-600 py-0.5 px-2 rounded-full text-xs">5</span>
+                        </a>
+                        <a href="#" class="border-transparent text-secondary hover:text-dark hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2">
+                            Users
+                            <span class="bg-gray-100 text-gray-600 py-0.5 px-2 rounded-full text-xs">3</span>
+                        </a>
+                        <a href="#" class="border-transparent text-secondary hover:text-dark hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                            Spam
+                        </a>
+                        <a href="#" class="border-transparent text-secondary hover:text-dark hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                            Other
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Table -->
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-border">
+                        <thead class="bg-gray-50/50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-secondary uppercase tracking-wider">Reported Item</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-secondary uppercase tracking-wider">Reporter</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-secondary uppercase tracking-wider">Reason</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-secondary uppercase tracking-wider">Date</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-secondary uppercase tracking-wider">Status</th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Actions</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-border">
+                            
+                            <!-- Row 1: Idea / Pending -->
+                            <tr class="hover:bg-gray-50 transition-colors group">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="h-8 w-8 rounded bg-blue-50 flex items-center justify-center text-primary mr-3">
+                                            <iconify-icon icon="lucide:lightbulb" width="16"></iconify-icon>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs text-secondary">Idea</div>
+                                            <a href="#" class="text-sm font-medium text-dark hover:text-primary">Urban Hydroponics</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="h-6 w-6 rounded-full bg-gradient-to-tr from-purple-400 to-pink-500 flex items-center justify-center text-[10px] text-white font-bold mr-2">
+                                            JD
+                                        </div>
+                                        <span class="text-sm font-medium text-dark">John Doe</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-sm text-secondary truncate max-w-[180px]">Copied content from existing patent...</p>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary">
+                                    2 hrs ago
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-50 text-yellow-700 ring-1 ring-inset ring-yellow-600/20">
+                                        Pending
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <button class="text-white bg-primary hover:bg-primaryHover shadow-sm px-3 py-1.5 rounded-md text-xs transition-all">
+                                        Review
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2: User / Under Review -->
+                            <tr class="hover:bg-gray-50 transition-colors group">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="h-8 w-8 rounded bg-purple-50 flex items-center justify-center text-purple-600 mr-3">
+                                            <iconify-icon icon="lucide:user" width="16"></iconify-icon>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs text-secondary">User</div>
+                                            <a href="#" class="text-sm font-medium text-dark hover:text-primary">CryptoKing99</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img class="h-6 w-6 rounded-full object-cover mr-2" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+                                        <span class="text-sm font-medium text-dark">Alice Smith</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-sm text-secondary truncate max-w-[180px]">Sending spam messages to investors</p>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary">
+                                    Oct 24, 2023
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                                        Under Review
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <button class="text-secondary hover:text-dark px-3 py-1.5 rounded-md text-xs border border-gray-200 hover:bg-gray-50 transition-colors">
+                                        Details
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 3: Idea / Resolved -->
+                            <tr class="hover:bg-gray-50 transition-colors group">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="h-8 w-8 rounded bg-blue-50 flex items-center justify-center text-primary mr-3">
+                                            <iconify-icon icon="lucide:lightbulb" width="16"></iconify-icon>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs text-secondary">Idea</div>
+                                            <a href="#" class="text-sm font-medium text-dark hover:text-primary">Perpetual Motion</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center text-[10px] text-gray-600 font-bold mr-2">
+                                            AN
+                                        </div>
+                                        <span class="text-sm font-medium text-dark">Anon User</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-sm text-secondary truncate max-w-[180px]">Scientifically impossible claim</p>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary">
+                                    Oct 23, 2023
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
+                                        Resolved
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <button class="text-secondary hover:text-dark px-3 py-1.5 rounded-md text-xs border border-gray-200 hover:bg-gray-50 transition-colors">
+                                        Details
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 4: User / Dismissed -->
+                            <tr class="hover:bg-gray-50 transition-colors group">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="h-8 w-8 rounded bg-purple-50 flex items-center justify-center text-purple-600 mr-3">
+                                            <iconify-icon icon="lucide:user" width="16"></iconify-icon>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs text-secondary">User</div>
+                                            <a href="#" class="text-sm font-medium text-dark hover:text-primary">Mark Zucker</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img class="h-6 w-6 rounded-full object-cover mr-2" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+                                        <span class="text-sm font-medium text-dark">Tom B.</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-sm text-secondary truncate max-w-[180px]">Impersonation accusation</p>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary">
+                                    Oct 22, 2023
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700 ring-1 ring-inset ring-gray-600/10">
+                                        Dismissed
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <button class="text-secondary hover:text-dark px-3 py-1.5 rounded-md text-xs border border-gray-200 hover:bg-gray-50 transition-colors">
+                                        Details
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-border sm:px-6">
+                    <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                        <div>
+                            <p class="text-sm text-secondary">
+                                Showing <span class="font-medium text-dark">1</span> to <span class="font-medium text-dark">4</span> of <span class="font-medium text-dark">156</span> reports
+                            </p>
+                        </div>
+                        <div>
+                            <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                                <a href="#" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-secondary ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                                    <span class="sr-only">Previous</span>
+                                    <iconify-icon icon="lucide:chevron-left" width="16"></iconify-icon>
+                                </a>
+                                <a href="#" aria-current="page" class="relative z-10 inline-flex items-center bg-primary px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">1</a>
+                                <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-dark ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">2</a>
+                                <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-dark ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">3</a>
+                                <span class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-secondary ring-1 ring-inset ring-gray-300 focus:outline-offset-0">...</span>
+                                <a href="#" class="relative inline-flex items-center rounded-r-md px-2 py-2 text-secondary ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                                    <span class="sr-only">Next</span>
+                                    <iconify-icon icon="lucide:chevron-right" width="16"></iconify-icon>
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- REPORT DETAIL MODAL (Overlay State) -->
+    <div class="relative z-50" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-dark/40 backdrop-blur-sm transition-opacity"></div>
+      
+        <!-- Modal Panel -->
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                
+                <div class="relative transform overflow-hidden rounded-xl bg-white text-left shadow-modal transition-all sm:my-8 sm:w-full sm:max-w-2xl border border-gray-100">
+                    
+                    <!-- Modal Header -->
+                    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 border-b border-gray-100">
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="mx-auto flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-red-50 sm:mx-0">
+                                    <iconify-icon icon="lucide:flag" class="text-red-600" width="20"></iconify-icon>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="text-lg font-semibold leading-6 text-dark" id="modal-title">Review Report #1239</h3>
+                                    <div class="text-sm text-secondary flex items-center gap-2 mt-0.5">
+                                        <span>Urban Hydroponics</span>
+                                        <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                        <span>Idea</span>
+                                        <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                        <span>Oct 24, 2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="text-gray-400 hover:text-gray-500">
+                                <iconify-icon icon="lucide:x" width="20"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="px-4 py-5 sm:p-6 bg-gray-50/30">
+                        <div class="grid grid-cols-1 gap-6">
+                            
+                            <!-- Reporter & Reason -->
+                            <div class="bg-surface p-4 rounded-lg border border-border shadow-sm">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="h-8 w-8 rounded-full bg-gradient-to-tr from-purple-400 to-pink-500 flex items-center justify-center text-xs text-white font-bold">JD</div>
+                                        <div>
+                                            <p class="text-sm font-semibold text-dark">John Doe</p>
+                                            <p class="text-xs text-secondary">Reporter</p>
+                                        </div>
+                                    </div>
+                                    <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">Copyright Violation</span>
+                                </div>
+                                <p class="text-sm text-dark bg-gray-50 p-3 rounded border border-gray-100">
+                                    "This idea seems to be a direct copy of the 'CityFarm' patent US88231. The description is almost identical. Please check."
+                                </p>
+                            </div>
+
+                            <!-- Content Preview -->
+                            <div>
+                                <h4 class="text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Reported Content</h4>
+                                <div class="bg-surface rounded-lg border border-border overflow-hidden group">
+                                    <div class="flex">
+                                        <div class="w-24 bg-gray-100 flex items-center justify-center border-r border-border">
+                                            <iconify-icon icon="lucide:image" class="text-gray-300" width="24"></iconify-icon>
+                                        </div>
+                                        <div class="p-4 flex-1">
+                                            <div class="flex justify-between items-start">
+                                                <h4 class="text-base font-semibold text-dark">Urban Hydroponics System</h4>
+                                                <span class="text-xs text-secondary">Created 2 days ago</span>
+                                            </div>
+                                            <p class="text-sm text-secondary mt-1 line-clamp-2">A scalable vertical farming solution for high-density cities using aeroponics and AI-driven nutrient delivery...</p>
+                                            <div class="mt-3 flex items-center gap-2">
+                                                <span class="inline-flex items-center rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700">Sustainability</span>
+                                                <span class="inline-flex items-center rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700">AgTech</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Admin Notes -->
+                            <div>
+                                <label for="notes" class="block text-sm font-medium leading-6 text-dark">Admin Notes</label>
+                                <div class="mt-2">
+                                    <textarea id="notes" name="notes" rows="2" class="block w-full rounded-md border-0 py-1.5 text-dark shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 px-3" placeholder="Add internal notes..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Footer -->
+                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 border-t border-border gap-2">
+                        <button type="button" class="inline-flex w-full justify-center rounded-lg bg-emerald-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 sm:ml-3 sm:w-auto transition-colors">
+                            <iconify-icon icon="lucide:check" class="mr-2 mt-0.5" width="16"></iconify-icon>
+                            Keep &amp; Resolve
+                        </button>
+                        <button type="button" class="mt-3 inline-flex w-full justify-center rounded-lg bg-white px-3 py-2 text-sm font-semibold text-dark shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto transition-colors">
+                            Dismiss
+                        </button>
+                        <div class="flex-1"></div> <!-- Spacer -->
+                        <button type="button" class="mt-3 inline-flex w-full justify-center rounded-lg bg-white px-3 py-2 text-sm font-semibold text-orange-600 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-orange-50 sm:mt-0 sm:w-auto transition-colors">
+                            Warn User
+                        </button>
+                        <button type="button" class="mt-3 inline-flex w-full justify-center rounded-lg bg-white px-3 py-2 text-sm font-semibold text-red-600 shadow-sm ring-1 ring-inset ring-red-200 hover:bg-red-50 sm:mt-0 sm:w-auto transition-colors border-red-200">
+                            Remove Content
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body></html>

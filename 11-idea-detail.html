@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-gray-50"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoStream AI - Crowd Builder</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+secondary: '#6B7280',
+success: '#10B981',
+warning: '#F59E0B',
+error: '#EF4444',
+dark: '#111827',
+border: '#E5E7EB',
+surface: '#FFFFFF',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+},
+spacing: {
+'card': '20px',
+'section': '32px',
+},
+borderRadius: {
+'card': '12px',
+'btn': '8px',
+},
+boxShadow: {
+'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+}
+}
+}
+}
+</script>
+<style>
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+/* Thread Line Styles */
+.thread-line {
+position: absolute;
+top: 48px;
+left: 20px;
+bottom: 0;
+width: 2px;
+background-color: #E5E7EB;
+}
+.thread-curve {
+position: absolute;
+top: -16px;
+left: -24px;
+width: 24px;
+height: 24px;
+border-bottom-left-radius: 12px;
+border-left: 2px solid #E5E7EB;
+border-bottom: 2px solid #E5E7EB;
+}
+</style></head>
+<body class="text-[#111827] font-sans antialiased selection:bg-primary/20 selection:text-primary min-h-screen flex">
+
+    <!-- SIDEBAR (Fixed 200px) -->
+    <aside class="fixed top-0 left-0 w-[200px] h-screen bg-surface border-r border-border z-40 flex flex-col hidden lg:flex">
+        <div class="h-16 flex items-center px-6 border-b border-border">
+            <div class="flex items-center gap-2 text-primary">
+                <iconify-icon icon="lucide:layers" width="24" stroke-width="1.5"></iconify-icon>
+                <span class="font-semibold tracking-tight text-lg text-dark">CrowdBuilder</span>
+            </div>
+        </div>
+
+        <nav class="flex-1 px-3 py-6 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-btn transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:layout-dashboard" width="18"></iconify-icon>
+                Feed
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-btn transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:compass" width="18"></iconify-icon>
+                Discover
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-btn transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:trending-up" width="18"></iconify-icon>
+                Trending
+            </a>
+            <div class="pt-4 pb-2 px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Your Space</div>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-btn transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:briefcase" width="18"></iconify-icon>
+                My Portfolio
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-secondary hover:text-dark hover:bg-gray-50 rounded-btn transition-colors text-sm font-medium">
+                <iconify-icon icon="lucide:bookmark" width="18"></iconify-icon>
+                Saved Items
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-border">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300"></div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-semibold text-dark">Alex D.</span>
+                    <span class="text-[10px] text-secondary">Free Plan</span>
+                </div>
+            </a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="flex-1 lg:ml-[200px] w-full min-h-screen pb-12">
+        
+        <!-- Mobile Header (Visible only on mobile) -->
+        <header class="lg:hidden h-16 bg-surface border-b border-border flex items-center justify-between px-4 sticky top-0 z-30">
+            <div class="flex items-center gap-2 text-primary">
+                <iconify-icon icon="lucide:layers" width="24"></iconify-icon>
+                <span class="font-semibold tracking-tight">CrowdBuilder</span>
+            </div>
+            <button class="text-gray-500">
+                <iconify-icon icon="lucide:menu" width="24"></iconify-icon>
+            </button>
+        </header>
+
+        <div class="max-w-[1200px] mx-auto px-4 md:px-8 py-8">
+            
+            <!-- Breadcrumb -->
+            <div class="flex items-center gap-2 text-sm text-secondary mb-8">
+                <a href="#" class="hover:text-primary">Discover</a>
+                <iconify-icon icon="lucide:chevron-right" width="14"></iconify-icon>
+                <a href="#" class="hover:text-primary">SaaS</a>
+                <iconify-icon icon="lucide:chevron-right" width="14"></iconify-icon>
+                <span class="text-dark font-medium">EcoStream AI</span>
+            </div>
+
+            <!-- TWO COLUMN LAYOUT -->
+            <div class="grid grid-cols-1 lg:grid-cols-[7fr_3fr] gap-8 relative">
+
+                <!-- LEFT COLUMN (70%) -->
+                <div class="space-y-10 min-w-0">
+
+                    <!-- IDEA HEADER -->
+                    <section class="flex flex-col sm:flex-row gap-6 items-start">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-blue-100 to-indigo-100 flex-shrink-0 border border-border shadow-sm p-1">
+                            <img src="https://api.iconify.design/lucide:user.svg?color=%230066FF" alt="Creator" class="w-full h-full object-cover rounded-full bg-white">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-3 mb-2">
+                                <h4 class="text-xl font-semibold text-dark tracking-tight">Sarah Jenkins</h4>
+                                <span class="px-2 py-0.5 rounded-full bg-blue-50 text-primary text-xs font-medium border border-blue-100">SaaS Platform</span>
+                                <span class="text-xs text-secondary flex items-center gap-1">
+                                    <iconify-icon icon="lucide:calendar" width="12"></iconify-icon>
+                                    Launched 2 days ago
+                                </span>
+                            </div>
+                            <h1 class="text-5xl font-semibold text-dark tracking-tight mb-3 leading-tight">EcoStream AI</h1>
+                            <p class="text-base text-secondary leading-relaxed max-w-2xl">
+                                Enterprise-grade energy optimization for data centers using predictive machine learning models to reduce carbon footprint by 40%.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- MEDIA GALLERY -->
+                    <section>
+                        <div class="aspect-video w-full bg-gray-100 rounded-card overflow-hidden border border-border shadow-sm relative group cursor-pointer mb-4">
+                            <div class="absolute inset-0 bg-gray-900/5 group-hover:bg-gray-900/0 transition-colors"></div>
+                            <!-- Placeholder for Video/Image -->
+                            <div class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-300">
+                                <iconify-icon icon="lucide:play-circle" width="64" class="text-primary/80 drop-shadow-lg group-hover:scale-110 transition-transform"></iconify-icon>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm text-white text-xs font-medium px-2 py-1 rounded">
+                                1:45 Demo
+                            </div>
+                        </div>
+                        
+                        <!-- Thumbnails -->
+                        <div class="flex gap-4 overflow-x-auto hide-scrollbar py-1">
+                            <button class="w-24 h-16 rounded-btn bg-white border-2 border-primary overflow-hidden flex-shrink-0 shadow-sm relative">
+                                <div class="absolute inset-0 bg-primary/10"></div>
+                            </button>
+                            <button class="w-24 h-16 rounded-btn bg-gray-100 border border-border overflow-hidden flex-shrink-0 hover:border-gray-300 transition-colors">
+                            </button>
+                            <button class="w-24 h-16 rounded-btn bg-gray-100 border border-border overflow-hidden flex-shrink-0 hover:border-gray-300 transition-colors">
+                            </button>
+                            <button class="w-24 h-16 rounded-btn bg-gray-100 border border-border overflow-hidden flex-shrink-0 hover:border-gray-300 transition-colors">
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- STORY SECTION -->
+                    <section>
+                        <h3 class="text-2xl font-semibold text-dark tracking-tight mb-6 flex items-center gap-2">
+                            The Story
+                            <div class="h-px bg-border flex-1 ml-4"></div>
+                        </h3>
+                        <div class="prose prose-blue max-w-none text-secondary">
+                            <p class="mb-4">
+                                Data centers currently consume about 3% of the world's electricity, a number expected to triple by 2030. While working as a systems architect at a major cloud provider, I noticed that cooling systems were running inefficiently, often based on static rules rather than real-time thermal dynamics.
+                            </p>
+                            <p class="mb-4">
+                                <strong>EcoStream AI</strong> was born from a simple prototype script that monitored server loads and adjusted cooling flows dynamically. In early tests, we saw a 15% reduction in energy usage within the first week.
+                            </p>
+                            <p>
+                                We are now building a plug-and-play API that integrates with existing BMS (Building Management Systems) to bring this efficiency to every data center, from on-premise server rooms to hyperscale facilities. Our goal is to save 1 Gigaton of CO2 emissions by 2030.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- SWOT ANALYSIS -->
+                    <section>
+                        <h3 class="text-2xl font-semibold text-dark tracking-tight mb-6 flex items-center gap-2">
+                            SWOT Analysis
+                            <div class="h-px bg-border flex-1 ml-4"></div>
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Strengths -->
+                            <div class="p-5 rounded-card bg-green-50/50 border border-success/20">
+                                <div class="flex items-center gap-2 mb-3 text-success font-semibold">
+                                    <iconify-icon icon="lucide:trending-up" width="18"></iconify-icon>
+                                    Strengths
+                                </div>
+                                <ul class="list-disc list-outside ml-4 space-y-2 text-sm text-gray-700">
+                                    <li>Proprietary predictive algorithm (Patent Pending).</li>
+                                    <li>Low implementation cost for clients (Software only).</li>
+                                    <li>Strong technical founding team.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Weaknesses -->
+                            <div class="p-5 rounded-card bg-red-50/50 border border-error/20">
+                                <div class="flex items-center gap-2 mb-3 text-error font-semibold">
+                                    <iconify-icon icon="lucide:alert-circle" width="18"></iconify-icon>
+                                    Weaknesses
+                                </div>
+                                <ul class="list-disc list-outside ml-4 space-y-2 text-sm text-gray-700">
+                                    <li>Long sales cycle with enterprise clients.</li>
+                                    <li>Requires integration with legacy hardware.</li>
+                                    <li>Limited initial marketing budget.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Opportunities -->
+                            <div class="p-5 rounded-card bg-blue-50/50 border border-primary/20">
+                                <div class="flex items-center gap-2 mb-3 text-primary font-semibold">
+                                    <iconify-icon icon="lucide:zap" width="18"></iconify-icon>
+                                    Opportunities
+                                </div>
+                                <ul class="list-disc list-outside ml-4 space-y-2 text-sm text-gray-700">
+                                    <li>Rising global energy prices increase demand.</li>
+                                    <li>Government grants for green tech initiatives.</li>
+                                    <li>Partnerships with hardware manufacturers.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Threats -->
+                            <div class="p-5 rounded-card bg-orange-50/50 border border-warning/20">
+                                <div class="flex items-center gap-2 mb-3 text-warning font-semibold">
+                                    <iconify-icon icon="lucide:shield-alert" width="18"></iconify-icon>
+                                    Threats
+                                </div>
+                                <ul class="list-disc list-outside ml-4 space-y-2 text-sm text-gray-700">
+                                    <li>Major cloud providers developing in-house solutions.</li>
+                                    <li>Cybersecurity concerns regarding infrastructure access.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- LEGAL SECTION -->
+                    <section>
+                        <h3 class="text-2xl font-semibold text-dark tracking-tight mb-6 flex items-center gap-2">
+                            Legal Considerations
+                            <div class="h-px bg-border flex-1 ml-4"></div>
+                        </h3>
+                        <div class="p-6 rounded-card border border-border bg-white text-secondary text-sm leading-relaxed">
+                            <p class="mb-2"><strong>IP Status:</strong> Provisional patent filed for the thermal prediction algorithm (USPTO #63/123,456).</p>
+                            <p class="mb-2"><strong>Data Privacy:</strong> System operates on metadata only; no PII or sensitive payload data is accessed or transmitted.</p>
+                            <p><strong>Compliance:</strong> Designed to meet SOC 2 Type II and ISO 27001 standards for enterprise vendor requirements.</p>
+                        </div>
+                    </section>
+
+                    <!-- DISCUSSION SECTION -->
+                    <section>
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-2xl font-semibold text-dark tracking-tight">Discussion <span class="text-secondary font-normal text-lg ml-2">42</span></h3>
+                            
+                            <!-- Sort options -->
+                            <div class="flex gap-1 bg-white border border-border rounded-lg p-1">
+                                <button class="px-3 py-1 text-xs font-medium bg-gray-100 text-dark rounded-md">Top</button>
+                                <button class="px-3 py-1 text-xs font-medium text-secondary hover:bg-gray-50 rounded-md">Newest</button>
+                            </div>
+                        </div>
+
+                        <!-- Comment Input -->
+                        <div class="bg-white border border-border rounded-card p-4 mb-8 shadow-sm">
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold flex-shrink-0">
+                                    ME
+                                </div>
+                                <div class="flex-1">
+                                    <textarea placeholder="What are your thoughts on this idea?" class="w-full min-h-[100px] p-3 text-sm border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary resize-y"></textarea>
+                                    <div class="flex justify-end mt-3">
+                                        <button class="bg-primary hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-btn transition-colors">
+                                            Post Comment
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thread Container -->
+                        <div class="space-y-6">
+                            
+                            <!-- Comment 1 (Root) -->
+                            <div class="relative group">
+                                <div class="flex gap-4">
+                                    <!-- Vote -->
+                                    <div class="flex flex-col items-center gap-1 pt-1 w-6">
+                                        <button class="text-secondary hover:text-warning transition-colors"><iconify-icon icon="lucide:arrow-big-up" width="20"></iconify-icon></button>
+                                        <span class="text-xs font-semibold text-dark">128</span>
+                                        <button class="text-secondary hover:text-indigo-600 transition-colors"><iconify-icon icon="lucide:arrow-big-down" width="20"></iconify-icon></button>
+                                    </div>
+                                    <!-- Content -->
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <div class="w-8 h-8 rounded-full bg-gray-200"></div>
+                                            <span class="text-sm font-semibold text-dark">Jason K.</span>
+                                            <span class="text-xs text-secondary">• Founder @ TechFlow • 2h ago</span>
+                                        </div>
+                                        <div class="text-sm text-dark mb-2 leading-relaxed">
+                                            This is exactly what the market needs. Have you considered how this handles edge computing environments where connectivity might be intermittent? The local optimization model needs to be robust.
+                                        </div>
+                                        <div class="flex items-center gap-4 text-xs font-medium text-secondary">
+                                            <button class="hover:text-primary flex items-center gap-1"><iconify-icon icon="lucide:message-circle" width="14"></iconify-icon> Reply</button>
+                                            <button class="hover:text-dark">Share</button>
+                                            <button class="hover:text-dark">Report</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Nested Reply (Level 1) -->
+                                <div class="relative mt-4 pl-10">
+                                    <!-- Visual Thread Line -->
+                                    <div class="absolute left-3 top-0 bottom-0 w-px bg-border group-hover:bg-gray-300 transition-colors h-full"></div>
+                                    <div class="absolute left-3 top-4 w-4 h-4 border-l border-b border-border rounded-bl-xl"></div>
+
+                                    <div class="flex gap-4">
+                                        <div class="flex flex-col items-center gap-1 pt-1 w-6">
+                                            <button class="text-secondary hover:text-warning"><iconify-icon icon="lucide:arrow-big-up" width="20"></iconify-icon></button>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center gap-2 mb-1">
+                                                <div class="w-8 h-8 rounded-full bg-blue-100 border border-blue-200"></div>
+                                                <span class="text-sm font-semibold text-primary bg-blue-50 px-1.5 rounded text-[10px] border border-blue-100">Creator</span>
+                                                <span class="text-sm font-semibold text-dark">Sarah Jenkins</span>
+                                                <span class="text-xs text-secondary">• 1h ago</span>
+                                            </div>
+                                            <div class="text-sm text-dark mb-2 leading-relaxed">
+                                                Great question, Jason! We actually run a lightweight version of the model locally on the edge gateway. It syncs learning parameters back to the cloud only when connectivity is stable, but inference happens on-prem.
+                                            </div>
+                                            <div class="flex items-center gap-4 text-xs font-medium text-secondary">
+                                                <button class="hover:text-primary flex items-center gap-1"><iconify-icon icon="lucide:message-circle" width="14"></iconify-icon> Reply</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Nested Reply (Level 2) -->
+                                    <div class="relative mt-4 pl-10">
+                                         <!-- Visual Thread Line -->
+                                        <div class="absolute left-3 top-[-30px] bottom-0 w-px bg-border h-[calc(100%+30px)]"></div>
+                                        <div class="absolute left-3 top-4 w-4 h-4 border-l border-b border-border rounded-bl-xl"></div>
+                                        
+                                        <div class="flex gap-4">
+                                            <div class="flex flex-col items-center gap-1 pt-1 w-6">
+                                                <button class="text-secondary hover:text-warning"><iconify-icon icon="lucide:arrow-big-up" width="20"></iconify-icon></button>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="flex items-center gap-2 mb-1">
+                                                    <div class="w-8 h-8 rounded-full bg-purple-100"></div>
+                                                    <span class="text-sm font-semibold text-dark">Mike Ross</span>
+                                                    <span class="text-xs text-secondary">• 45m ago</span>
+                                                </div>
+                                                <div class="text-sm text-dark mb-2 leading-relaxed">
+                                                    That sounds solid. Does it require specific hardware specs for the gateway?
+                                                </div>
+                                                <div class="flex items-center gap-4 text-xs font-medium text-secondary">
+                                                    <button class="hover:text-primary flex items-center gap-1"><iconify-icon icon="lucide:message-circle" width="14"></iconify-icon> Reply</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Load More -->
+                             <button class="text-sm font-medium text-primary hover:text-blue-700 pl-14 flex items-center gap-1 mt-2">
+                                <iconify-icon icon="lucide:corner-down-right" width="16"></iconify-icon>
+                                Load 5 more replies
+                            </button>
+                            
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- RIGHT COLUMN (30%) - Actions & Meta -->
+                <div class="space-y-6">
+                    
+                    <!-- UPVOTE STICKY -->
+                    <div class="sticky top-6 z-10">
+                        <div class="flex flex-col gap-6">
+                            
+                            <!-- Large Vote Button -->
+                            <button class="group bg-white w-full h-[120px] rounded-card border-2 border-border hover:border-primary transition-all duration-200 flex flex-col items-center justify-center shadow-card active:scale-[0.98]">
+                                <iconify-icon icon="lucide:triangle" class="text-gray-400 group-hover:text-primary transition-colors mb-2 group-hover:-translate-y-1 transform duration-300" width="32" stroke-width="2"></iconify-icon>
+                                <span class="text-2xl font-bold text-dark group-hover:text-primary">1,240</span>
+                                <span class="text-xs font-semibold text-secondary uppercase tracking-wide mt-1">Upvote</span>
+                            </button>
+
+                            <!-- Action Buttons -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <button class="flex items-center justify-center gap-2 bg-white border border-border hover:border-gray-300 hover:bg-gray-50 text-secondary hover:text-dark py-2.5 rounded-btn transition-colors text-sm font-medium shadow-sm">
+                                    <iconify-icon icon="lucide:bookmark" width="18"></iconify-icon>
+                                    Save
+                                </button>
+                                <button class="flex items-center justify-center gap-2 bg-white border border-border hover:border-gray-300 hover:bg-gray-50 text-secondary hover:text-dark py-2.5 rounded-btn transition-colors text-sm font-medium shadow-sm">
+                                    <iconify-icon icon="lucide:share-2" width="18"></iconify-icon>
+                                    Share
+                                </button>
+                            </div>
+                            <div class="flex justify-center">
+                                <button class="flex items-center gap-1 text-xs text-secondary hover:text-error transition-colors">
+                                    <iconify-icon icon="lucide:flag" width="14"></iconify-icon>
+                                    Report this idea
+                                </button>
+                            </div>
+
+                            <!-- STATUS CARD -->
+                            <div class="bg-surface border border-border rounded-card p-5 shadow-sm">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="text-xs font-semibold text-secondary uppercase tracking-wider">Status</span>
+                                    <span class="px-2 py-0.5 bg-green-100 text-green-700 border border-green-200 text-[10px] font-bold rounded uppercase tracking-wide">Original</span>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span class="text-secondary">Submitted</span>
+                                        <span class="text-dark font-medium">Oct 24, 2023</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span class="text-secondary">Approved</span>
+                                        <span class="text-dark font-medium">Oct 25, 2023</span>
+                                    </div>
+                                    <div class="pt-4 border-t border-border flex items-center gap-2 text-warning">
+                                        <iconify-icon icon="lucide:star" width="16" fill="currentColor"></iconify-icon>
+                                        <span class="text-xs font-bold uppercase tracking-wide">Featured Pick</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CREATOR CARD -->
+                            <div class="bg-surface border border-border rounded-card p-5 shadow-sm">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden">
+                                        <img src="https://api.iconify.design/lucide:user.svg?color=%230066FF" alt="Creator" class="w-full h-full object-cover bg-white">
+                                    </div>
+                                    <div>
+                                        <h4 class="text-base font-semibold text-dark leading-none mb-1">Sarah Jenkins</h4>
+                                        <span class="text-xs text-secondary">San Francisco, CA</span>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2 text-center mb-4">
+                                    <div class="bg-gray-50 rounded-lg py-2 border border-gray-100">
+                                        <div class="text-lg font-semibold text-dark">4</div>
+                                        <div class="text-[10px] text-secondary font-medium uppercase">Ideas</div>
+                                    </div>
+                                    <div class="bg-gray-50 rounded-lg py-2 border border-gray-100">
+                                        <div class="text-lg font-semibold text-dark">12k</div>
+                                        <div class="text-[10px] text-secondary font-medium uppercase">Karma</div>
+                                    </div>
+                                </div>
+                                <button class="w-full text-center text-primary text-sm font-medium hover:underline">
+                                    View Profile →
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+
+</body></html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pending Queue - CrowdBuilder Admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+primaryLight: '#E5F0FF',
+secondary: '#6B7280',
+dark: '#111827',
+border: '#E5E7EB',
+surface: '#FFFFFF',
+bg: '#F3F4F6',
+success: '#10B981',
+warning: '#F59E0B',
+danger: '#EF4444',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+},
+boxShadow: {
+'soft': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+}
+}
+}
+}
+</script>
+<style>
+.sidebar-scroll::-webkit-scrollbar { width: 4px; }
+.sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background-color: #E5E7EB; border-radius: 20px; }
+</style></head>
+<body class="bg-bg font-sans text-dark antialiased h-screen flex overflow-hidden selection:bg-primary/20 selection:text-primary">
+
+    <!-- ADMIN SIDEBAR (Fixed 200px) -->
+    <aside class="w-[200px] h-full bg-surface border-r border-border flex flex-col fixed left-0 top-0 z-50 shadow-sm">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-5 border-b border-border/50">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-primary flex items-center justify-center text-white">
+                    <iconify-icon icon="lucide:layers" width="14" stroke-width="2.5"></iconify-icon>
+                </div>
+                <span class="font-semibold text-sm tracking-tight text-dark">CrowdBuilder</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto sidebar-scroll py-6 px-3 space-y-8">
+            <!-- Section: Overview -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Overview</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:layout-dashboard" width="18"></iconify-icon>
+                            Admin Home
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Content -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Content</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <!-- ACTIVE STATE -->
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md bg-primary/5 text-primary text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:list-todo" width="18"></iconify-icon>
+                            Pending Queue
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:star" width="18"></iconify-icon>
+                            Featured
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:pen-tool" width="18"></iconify-icon>
+                            CMS
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Users -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Users</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:users" width="18"></iconify-icon>
+                            Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:flag" width="18"></iconify-icon>
+                            Reports
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section: Documents -->
+            <div>
+                <h4 class="px-2 text-xs font-semibold text-secondary uppercase tracking-wider mb-2">Documents</h4>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 px-2 py-2 rounded-md text-secondary hover:text-dark hover:bg-gray-50 text-sm font-medium group transition-colors">
+                            <iconify-icon icon="lucide:file-text" width="18"></iconify-icon>
+                            Doc Management
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- User Profile (Bottom) -->
+        <div class="p-4 border-t border-border">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-xs font-medium text-dark">
+                    AD
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-medium text-dark">Admin User</span>
+                    <span class="text-[10px] text-secondary">Super Admin</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-[200px] flex-1 h-full overflow-y-auto bg-bg p-8">
+        <div class="max-w-7xl mx-auto space-y-6">
+            
+            <!-- Page Header -->
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <h2 class="text-[36px] font-semibold tracking-tight text-dark leading-tight">Pending Queue</h2>
+                    <span class="px-2.5 py-1 rounded-full bg-gray-200 text-secondary text-xs font-medium translate-y-1">23 pending</span>
+                </div>
+                <!-- Optional Top Action -->
+                <button class="text-sm text-secondary hover:text-primary font-medium flex items-center gap-1 transition-colors">
+                    <iconify-icon icon="lucide:download" width="16"></iconify-icon> Export CSV
+                </button>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="border-b border-border">
+                <nav class="flex space-x-8" aria-label="Tabs">
+                    <a href="#" class="border-primary text-primary whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2">
+                        All Pending
+                        <span class="bg-primary/10 text-primary py-0.5 px-2 rounded-full text-xs">23</span>
+                    </a>
+                    <a href="#" class="border-transparent text-secondary hover:text-dark hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2 transition-colors">
+                        Original
+                        <span class="bg-gray-100 text-gray-600 py-0.5 px-2 rounded-full text-xs">15</span>
+                    </a>
+                    <a href="#" class="border-transparent text-secondary hover:text-dark hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2 transition-colors">
+                        Similar
+                        <span class="bg-gray-100 text-gray-600 py-0.5 px-2 rounded-full text-xs">6</span>
+                    </a>
+                    <a href="#" class="border-transparent text-secondary hover:text-dark hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2 transition-colors">
+                        Duplicate
+                        <span class="bg-gray-100 text-gray-600 py-0.5 px-2 rounded-full text-xs">2</span>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between py-2">
+                <!-- Search -->
+                <div class="relative w-full md:w-96">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary">
+                        <iconify-icon icon="lucide:search" width="18"></iconify-icon>
+                    </div>
+                    <input type="text" class="block w-full pl-10 pr-3 py-2 border border-border rounded-md leading-5 bg-white placeholder-secondary text-dark text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition duration-150 ease-in-out shadow-sm" placeholder="Search by idea title or creator...">
+                </div>
+
+                <!-- Controls -->
+                <div class="flex gap-3 w-full md:w-auto">
+                    <!-- Date Range -->
+                    <button class="px-3 py-2 bg-white border border-border rounded-md text-sm font-medium text-secondary hover:text-dark hover:border-gray-300 shadow-sm flex items-center gap-2 transition-all">
+                        <iconify-icon icon="lucide:calendar" width="16"></iconify-icon>
+                        Last 30 Days
+                    </button>
+                    
+                    <!-- Sort -->
+                    <div class="relative">
+                        <select class="appearance-none bg-white border border-border text-dark text-sm rounded-md focus:ring-primary focus:border-primary block w-full pl-3 pr-8 py-2 shadow-sm font-medium cursor-pointer hover:border-gray-300 transition-colors">
+                            <option>Oldest first</option>
+                            <option>Newest first</option>
+                            <option>Similarity score</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-secondary">
+                            <iconify-icon icon="lucide:chevron-down" width="14"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Table -->
+            <div class="bg-white rounded-lg shadow-soft border border-border overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-border">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-secondary uppercase tracking-wider cursor-pointer group hover:bg-gray-100 transition-colors">
+                                    <div class="flex items-center gap-1">Idea <iconify-icon icon="lucide:arrow-down" width="12" class="opacity-50 group-hover:opacity-100"></iconify-icon></div>
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-secondary uppercase tracking-wider">
+                                    Creator
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-secondary uppercase tracking-wider cursor-pointer group hover:bg-gray-100 transition-colors">
+                                    <div class="flex items-center gap-1">Submitted <iconify-icon icon="lucide:chevrons-up-down" width="12" class="opacity-30 group-hover:opacity-100"></iconify-icon></div>
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-secondary uppercase tracking-wider">
+                                    Similarity
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-secondary uppercase tracking-wider">
+                                    Status
+                                </th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Actions</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-border">
+                            
+                            <!-- Row 1: Original -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 h-10 w-10 bg-indigo-100 rounded-md flex items-center justify-center text-indigo-600">
+                                            <iconify-icon icon="lucide:shopping-bag" width="20"></iconify-icon>
+                                        </div>
+                                        <div class="ml-4">
+                                            <a href="#" class="text-sm font-semibold text-dark hover:text-primary transition-colors">AI Shopping Assistant</a>
+                                            <div class="text-xs text-secondary">E-commerce / Retail</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="h-6 w-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-[10px] font-bold">JS</div>
+                                        <div class="ml-2 text-sm text-dark font-medium">John Smith</div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-secondary">Jan 14, 2026</div>
+                                    <div class="text-xs text-gray-400">10:42 AM</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></div>
+                                        Original
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                        Pending Review
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <button class="text-white bg-primary hover:bg-blue-700 px-3 py-1.5 rounded-md text-xs font-medium shadow-sm transition-all flex items-center gap-1 ml-auto">
+                                        Review <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2: Similar -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 h-10 w-10 bg-green-100 rounded-md flex items-center justify-center text-green-600">
+                                            <iconify-icon icon="lucide:leaf" width="20"></iconify-icon>
+                                        </div>
+                                        <div class="ml-4">
+                                            <a href="#" class="text-sm font-semibold text-dark hover:text-primary transition-colors">EcoTravel Rewards</a>
+                                            <div class="text-xs text-secondary">Sustainability / Travel</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="h-6 w-6 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-[10px] font-bold">SL</div>
+                                        <div class="ml-2 text-sm text-dark font-medium">Sarah Lee</div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-secondary">Jan 14, 2026</div>
+                                    <div class="text-xs text-gray-400">09:15 AM</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-50 text-orange-700 border border-orange-200">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-orange-500 mr-1.5"></div>
+                                        85% Similar
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                        Pending Review
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <button class="text-white bg-primary hover:bg-blue-700 px-3 py-1.5 rounded-md text-xs font-medium shadow-sm transition-all flex items-center gap-1 ml-auto">
+                                        Review <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 3: Original -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 h-10 w-10 bg-purple-100 rounded-md flex items-center justify-center text-purple-600">
+                                            <iconify-icon icon="lucide:dumbbell" width="20"></iconify-icon>
+                                        </div>
+                                        <div class="ml-4">
+                                            <a href="#" class="text-sm font-semibold text-dark hover:text-primary transition-colors">VR Fitness Coach</a>
+                                            <div class="text-xs text-secondary">Health / Tech</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="h-6 w-6 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center text-[10px] font-bold">MK</div>
+                                        <div class="ml-2 text-sm text-dark font-medium">Mike Khan</div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-secondary">Jan 13, 2026</div>
+                                    <div class="text-xs text-gray-400">4:30 PM</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></div>
+                                        Original
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                        Pending Review
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <button class="text-white bg-primary hover:bg-blue-700 px-3 py-1.5 rounded-md text-xs font-medium shadow-sm transition-all flex items-center gap-1 ml-auto">
+                                        Review <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 4: Duplicate -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 h-10 w-10 bg-red-100 rounded-md flex items-center justify-center text-red-600">
+                                            <iconify-icon icon="lucide:music" width="20"></iconify-icon>
+                                        </div>
+                                        <div class="ml-4">
+                                            <a href="#" class="text-sm font-semibold text-dark hover:text-primary transition-colors">Spotify Clone 2.0</a>
+                                            <div class="text-xs text-secondary">Music / Streaming</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="h-6 w-6 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center text-[10px] font-bold">AL</div>
+                                        <div class="ml-2 text-sm text-dark font-medium">Alex Lin</div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-secondary">Jan 13, 2026</div>
+                                    <div class="text-xs text-gray-400">2:15 PM</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-1.5"></div>
+                                        Duplicate
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                        Pending Review
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <button class="text-white bg-primary hover:bg-blue-700 px-3 py-1.5 rounded-md text-xs font-medium shadow-sm transition-all flex items-center gap-1 ml-auto">
+                                        Review <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 5: Similar -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 h-10 w-10 bg-cyan-100 rounded-md flex items-center justify-center text-cyan-600">
+                                            <iconify-icon icon="lucide:wind" width="20"></iconify-icon>
+                                        </div>
+                                        <div class="ml-4">
+                                            <a href="#" class="text-sm font-semibold text-dark hover:text-primary transition-colors">Smart AC Controller</a>
+                                            <div class="text-xs text-secondary">IoT / Home</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="h-6 w-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-[10px] font-bold">DR</div>
+                                        <div class="ml-2 text-sm text-dark font-medium">David Ross</div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-secondary">Jan 12, 2026</div>
+                                    <div class="text-xs text-gray-400">6:00 PM</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-50 text-orange-700 border border-orange-200">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-orange-500 mr-1.5"></div>
+                                        92% Similar
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                        Pending Review
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <button class="text-white bg-primary hover:bg-blue-700 px-3 py-1.5 rounded-md text-xs font-medium shadow-sm transition-all flex items-center gap-1 ml-auto">
+                                        Review <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Pagination -->
+                    <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-border sm:px-6">
+                        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                            <div>
+                                <p class="text-sm text-secondary">
+                                    Showing <span class="font-medium text-dark">1</span> to <span class="font-medium text-dark">10</span> of <span class="font-medium text-dark">23</span> results
+                                </p>
+                            </div>
+                            <div>
+                                <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                    <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-border bg-white text-sm font-medium text-secondary hover:bg-gray-50">
+                                        <span class="sr-only">Previous</span>
+                                        <iconify-icon icon="lucide:chevron-left" width="16"></iconify-icon>
+                                    </a>
+                                    <a href="#" aria-current="page" class="z-10 bg-primary/5 border-primary text-primary relative inline-flex items-center px-4 py-2 border text-sm font-medium">1</a>
+                                    <a href="#" class="bg-white border-border text-secondary hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">2</a>
+                                    <a href="#" class="bg-white border-border text-secondary hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">3</a>
+                                    <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-border bg-white text-sm font-medium text-secondary hover:bg-gray-50">
+                                        <span class="sr-only">Next</span>
+                                        <iconify-icon icon="lucide:chevron-right" width="16"></iconify-icon>
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+
+</body></html>
