@@ -95,7 +95,7 @@ background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white
                             <label for="remember-me" class="ml-2 block text-sm text-slate-600 select-none cursor-pointer">Remember for 30 days</label>
                         </div>
                         <div class="text-sm">
-                            <a href="./forgot-password.html" class="font-medium text-[#0066FF] hover:text-blue-700 transition-colors">Forgot password?</a>
+                            <a href="#" class="font-medium text-[#0066FF] hover:text-blue-700 transition-colors">Forgot password?</a>
                         </div>
                     </div>
 
@@ -131,31 +131,11 @@ background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white
                     <!-- Bottom Link -->
                     <p class="text-center text-sm text-slate-500 pt-2">
                         Don't have an account?
-                        <a href="./signup.html" class="font-medium text-[#0066FF] hover:text-blue-700 transition-colors">Sign up</a>
+                        <a href="#" class="font-medium text-[#0066FF] hover:text-blue-700 transition-colors">Sign up</a>
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
-<script>
-(function() {
-  const signInBtn = document.querySelector('button[type="submit"]');
-  if (!signInBtn) return;
-
-  signInBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-
-    if (email && password) {
-      if (email.value === 'demo@demo.com' && password.value === '1234') {
-        location.href = './dashboard.html';
-      } else {
-        alert('Demo account: demo@demo.com / 1234');
-      }
-    }
-  });
-})();
-</script>
 </body></html>
