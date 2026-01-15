@@ -141,7 +141,7 @@ scrollbar-width: none;
                             <input id="terms" name="terms" type="checkbox" class="custom-checkbox h-4 w-4 rounded border-slate-300 text-[#0066FF] focus:ring-[#0066FF] focus:ring-offset-0 cursor-pointer appearance-none border checked:bg-[#0066FF] checked:border-[#0066FF] transition-all bg-white">
                         </div>
                         <div class="ml-3 text-sm">
-                            <label for="terms" class="text-slate-500">I agree to the <a href="#" class="font-medium text-slate-900 hover:underline">Terms of Service</a> and <a href="#" class="font-medium text-slate-900 hover:underline">Privacy Policy</a>.</label>
+                            <label for="terms" class="text-slate-500">I agree to the <a href="./18-terms.html" class="font-medium text-slate-900 hover:underline">Terms of Service</a> and <a href="./17-privacy.html" class="font-medium text-slate-900 hover:underline">Privacy Policy</a>.</label>
                         </div>
                     </div>
 
@@ -185,7 +185,7 @@ scrollbar-width: none;
                     
                     <p class="text-sm text-slate-500">
                         Already have an account?
-                        <a href="#" class="font-medium text-[#0066FF] hover:text-blue-700 transition-colors">Sign in</a>
+                        <a href="./login.html" class="font-medium text-[#0066FF] hover:text-blue-700 transition-colors">Sign in</a>
                     </p>
                 </div>
 
@@ -193,4 +193,15 @@ scrollbar-width: none;
         </div>
     </div>
 
+<script>
+(function() {
+  const form = document.querySelector('form');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    location.href = './dashboard.html';
+  });
+})();
+</script>
 </body></html>
