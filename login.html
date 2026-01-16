@@ -46,8 +46,8 @@ background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white
             <!-- Footer -->
             <div class="relative z-10 flex items-center gap-6 text-sm text-blue-200">
                 <span>© 2023 Crowd Builder Inc.</span>
-                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="./17-privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="./18-terms.html" class="hover:text-white transition-colors">Terms of Service</a>
             </div>
         </div>
 
@@ -95,7 +95,7 @@ background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white
                             <label for="remember-me" class="ml-2 block text-sm text-slate-600 select-none cursor-pointer">Remember for 30 days</label>
                         </div>
                         <div class="text-sm">
-                            <a href="#" class="font-medium text-[#0066FF] hover:text-blue-700 transition-colors">Forgot password?</a>
+                            <a href="./forgot-password.html" class="font-medium text-[#0066FF] hover:text-blue-700 transition-colors">Forgot password?</a>
                         </div>
                     </div>
 
@@ -131,11 +131,35 @@ background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white
                     <!-- Bottom Link -->
                     <p class="text-center text-sm text-slate-500 pt-2">
                         Don't have an account?
-                        <a href="#" class="font-medium text-[#0066FF] hover:text-blue-700 transition-colors">Sign up</a>
+                        <a href="./signup.html" class="font-medium text-[#0066FF] hover:text-blue-700 transition-colors">Sign up</a>
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
+<script>
+(function() {
+  const form = document.querySelector('.space-y-6');
+  const signInBtn = document.querySelector('button[type="submit"]');
+
+  if (signInBtn) {
+    signInBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+
+      if (email && password) {
+        if (email.value === 'demo@demo.com' && password.value === '1234') {
+          location.href = './dashboard.html';
+        } else if (email.value === 'admin@demo.com' && password.value === '1234') {
+          location.href = './20-admin-dashboard.html';
+        } else {
+          alert('Demo accounts:\n- User: demo@demo.com / 1234\n- Admin: admin@demo.com / 1234');
+        }
+      }
+    });
+  }
+})();
+</script>
 </body></html>
